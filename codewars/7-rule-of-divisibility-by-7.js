@@ -7,7 +7,7 @@ A number m of the form 10x + y is divisible by 7 if and only if x − 2y is divi
 
 The original number is divisible by 7 if and only if the last number obtained using this procedure is divisible by 7.
 
-Examples:
+#Examples:
 
 #1
 m = 371 -> 37 − (2×1) -> 37 − 2 = 35 ; thus, since 35 is divisible by 7, 371 is divisible by 7.
@@ -27,7 +27,6 @@ The number of steps is 7.
 #Task: Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, depending on the language) of numbers, the first being the last number m with at most 2 digits obtained by your function (this last m will be divisible or not by 7), the second one being the number of steps to get the result.
 */
 
-// Global variable 
 let count = 0;
 
 function seven(m) {
@@ -39,12 +38,17 @@ function seven(m) {
     const headDigit = Number(m.toString().substring(0, m.toString().length - 1));
     console.log("headDigit: ", headDigit)
     
-    // Reduce digit 
+    // Reduce digit x − 2y
     const reducedDigit = headDigit - (2 * lastDigit);
     console.log("reducedDigit: ", reducedDigit);
     
     const array = [];
+
     count++;
+    // Account for edge case seven(0)
+    if (m === 0 && count === 1) {
+      count = 0;
+    }
     console.log("count: ", count);
     
     // Recursion
@@ -52,6 +56,8 @@ function seven(m) {
     // Base case
     if (headDigit.toString().length === 2 || headDigit.toString().length === 1) {
       array.push(reducedDigit, count);
+      // Reset count to 0 when function has completed running (call stack)
+      count = 0;
       return array;
     }
     
@@ -61,6 +67,11 @@ function seven(m) {
     }
 }
 
+// Failed
+// seven(0) // [0, 0]
+// seven(1125749) // [95, 4]
+// seven(109349) // [90, 4]
+
 // seven(371) // [35, 1]
 // seven(483) // [42, 1]
 // seven(1603) // [7, 2]
@@ -69,14 +80,7 @@ console.log(seven(1603));
 
 /*
 #Notes 
-This code works! The problem with this code is that I'm using a global variable.
-This goes against the principles of functional programming. 
-This function has a side effect - it changes the state of the program outside
-of itself.
-So while this code works if you call the function only once, if you call this
-function again, you won't get intended results. This is because the global count 
-variable will have been incremented, and the function's output depends on the 
-value of the count variable. Because the value of the count variable has been
-"corrupted", we won't get the value we expect.
-I could try resetting the count variable back to zero in the base case.
+Code passed all tests and was submitted to Code Wars!
+Next step is to refactor this algo so I'm not using global variables.
+I can try leveraging scope or closure.  
 */ 

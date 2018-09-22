@@ -27,60 +27,103 @@ The number of steps is 7.
 #Task: Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, depending on the language) of numbers, the first being the last number m with at most 2 digits obtained by your function (this last m will be divisible or not by 7), the second one being the number of steps to get the result.
 */
 
-let count = 0;
+/*
+SOLUTIONS
+
+Solve w/ global variable + reset global variable (no discernible side effect)
+https://github.com/eunicode/algos/blob/5506fc40624ab06f09882df1eed653f6d925df20/codewars/7-rule-of-divisibility-by-7.js
+
+*/
 
 function seven(m) {
+  let count = 0;
+
+  function recursion(num = m) {
     // Get last digit of given number
-    const lastDigit = m % 10;
+    const lastDigit = num % 10;
     console.log("lastDigit: ", lastDigit);
 
     // Get rest of digit
-    const headDigit = Number(m.toString().substring(0, m.toString().length - 1));
-    console.log("headDigit: ", headDigit)
-    
-    // Reduce digit x − 2y
-    const reducedDigit = headDigit - (2 * lastDigit);
-    console.log("reducedDigit: ", reducedDigit);
-    
+    const headDigit = Math.trunc(num/10);
+    console.log("headDigit: ", headDigit);
+
+    // If headDigit is 10x, reducedDigit is x - 2y. 
+    // Else reducedDigit is just num and we can return the array.
+    let reducedDigit = num;
+
+    if (headDigit.toString().length >= 2) {
+      reducedDigit = headDigit - 2 * lastDigit;
+      console.log("reducedDigit: ", reducedDigit);
+    } else {
+      return [num, count];
+    }
+
     const array = [];
 
+    // Increment count if num is 10x and we go through the x - 2y process. 
     count++;
+
     // Account for edge case seven(0)
-    if (m === 0 && count === 1) {
+    if (num === 0 && count === 1) {
       count = 0;
     }
     console.log("count: ", count);
-    
+
     // Recursion
 
     // Base case
-    if (headDigit.toString().length === 2 || headDigit.toString().length === 1) {
+    // Once headDigit is two digits, that will be the last step because reducedDigit will be the number we want. 
+    if (headDigit.toString().length === 2) {
       array.push(reducedDigit, count);
       // Reset count to 0 when function has completed running (call stack)
       count = 0;
       return array;
     }
-    
+
     // Recursive case
+    // If headDigit is > two digits, we can do more steps.
     else {
-      return seven(reducedDigit);
+      return recursion(reducedDigit);
     }
+  }
+
+  return recursion();
 }
 
-// Failed
+// Edge cases
+// The given number is not 10x, that is, the number is only one digit. 
 // seven(0) // [0, 0]
-// seven(1125749) // [95, 4]
+// seven(7) // [7, 0]
+
+// Random tests
+// seven(1041074) // [89, 4]
+// seven(1065409) // [88, 4]
+// seven(1072614) // [99, 4]
 // seven(109349) // [90, 4]
+// seven(1125749) // [95, 4]
 
 // seven(371) // [35, 1]
 // seven(483) // [42, 1]
 // seven(1603) // [7, 2]
 // seven(31976) // A multiple of 7
+
+// console.log(seven(1125749));
+// console.log(seven(7));
 console.log(seven(1603));
+// console.log(seven(1041074));
 
 /*
-#Notes 
+#Notes #1
 Code passed all tests and was submitted to Code Wars!
 Next step is to refactor this algo so I'm not using global variables.
 I can try leveraging scope or closure.  
-*/ 
+*/
+
+/* Notes #2
+Can't use closure bc CodeWars runs tests by calling seven(someRandomNumber). 
+To use closure, we'd need to call two functions, first the outer function, 
+then the inner function returned by the outer function. 
+CodeWars only calls one function. 
+Maybe I could use promises + `then` method? 
+Or currying? 
+*/

@@ -9,7 +9,13 @@ Write a function that when given a URL as a string, parses out just the domain n
 domainName("http://github.com/carbonfive/raygun") == "github" 
 domainName("http://www.zombie-bites.com") == "zombie-bites"
 domainName("https://www.cnet.com") == "cnet"
+*/
 
+// MY SOLUTIONS
+/*
+Solve by controlling flow with conditional structures (if... else). 
+https://github.com/eunicode/algos/blob/c2274b4c61b4c76f2e842bf7d6ce6325c7edac9a/codewars/5-extract-domain-name-from-url.js
+The order of if statements is significant.
 */
 
 function domainName(url) {

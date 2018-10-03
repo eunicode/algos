@@ -1,6 +1,6 @@
 # My Algorithm Solutions
 
-My solutions may not the most elegant or efficient, but they are the results of my own mental labor. 
+My solutions may not be the most elegant or efficient, but they are the results of my own mental labor. 
 
 ## freeCodeCamp
 
@@ -12,4 +12,4 @@ I've finally leveled up to 6 kyu in CodeWars! Kyu is a term borrowed from Go, a 
 
 ## CodeSignal (formerly known as CodeFights)
 
-I'm also getting my feet wet in technical interview style algorithms by solving easy problems in CodeSignal. 
+I'm also getting my feet wet in technical interview style algorithms by solving easy problems in [CodeSignal](https://codesignal.com/). 

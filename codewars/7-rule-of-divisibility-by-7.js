@@ -3,10 +3,12 @@
 ================================================================= */
 
 /* 
+
 A Rule of Divisibility by 7
 https://www.codewars.com/kata/a-rule-of-divisibility-by-7/train/javascript
 
 #Instructions
+
 A number m of the form 10x + y is divisible by 7 if and only if x − 2y is divisible by 7. 
 In other words, subtract twice the last digit from the number formed by the remaining digits. 
 Continue to do this until a number known to be divisible or not by 7 is obtained; you can stop when 
@@ -33,10 +35,16 @@ The number of steps to get the result is 1.
 m = 477557101->47755708->4775554->477547->47740->4774->469->28 and 28 is divisible by 7, so is 477557101.
 The number of steps is 7.
 
-#Task: Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, 
+#Task
+
+Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, 
 depending on the language) of numbers, the first being the last number m with at most 2 digits obtained 
 by your function (this last m will be divisible or not by 7), the second one being the number of steps 
 to get the result.
+
+Tags: fundamentals
+My tags: recursion
+
 */
 
 /* =================================================================  
@@ -44,6 +52,7 @@ to get the result.
 ================================================================= */  
 
 /*
+
 Solve with global count variable, and reset global count variable at the end, so when I can call the 
 function again, the count will be 0 again. 
 https://github.com/eunicode/algos/blob/5506fc40624ab06f09882df1eed653f6d925df20/codewars/7-rule-of-divisibility-by-7.js
@@ -61,6 +70,10 @@ An example of closure would be a function + variables that are still alive even 
 execution context has been popped off the call stack.
 
 */
+
+/* =================================================================  
+  THE CODE
+================================================================= */ 
 
 function seven(m) {
   let count = 0;
@@ -139,7 +152,12 @@ function seven(m) {
 console.log(seven(1603));
 // console.log(seven(1041074));
 
+/* =================================================================  
+  THE NOTES
+================================================================= */  
+
 /*
+
 #Notes #1
 Code passed all tests and was submitted to Code Wars!
 Next step is to refactor this algo so I'm not using global variables.
@@ -153,12 +171,8 @@ CodeWars only calls one function.
 Maybe I could use promises + `then` method? 
 Or currying? 
 
-
-
-*/
-
-/* 
 TO DO LIST
 Refactor this by dealing with situations when the given number is only one digit.
 Research currying
+
 */

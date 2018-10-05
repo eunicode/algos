@@ -4,14 +4,20 @@
 Extract the domain name from a URL
 https://www.codewars.com/kata/514a024011ea4fb54200004b/train/javascript
 
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+Write a function that when given a URL as a string, parses out just the domain 
+name and returns it as a string. 
 
+For example:
 domainName("http://github.com/carbonfive/raygun") == "github" 
 domainName("http://www.zombie-bites.com") == "zombie-bites"
 domainName("https://www.cnet.com") == "cnet"
+
+Tags: FUNDAMENTALS, PARSING, STRINGS, REGULAR EXPRESSIONS
+DECLARATIVE PROGRAMMING, ADVANCED LANGUAGE FEATURES
 */
 
 // MY SOLUTIONS
+
 /*
 Solve by controlling flow with conditional structures (if... else). 
 https://github.com/eunicode/algos/blob/c2274b4c61b4c76f2e842bf7d6ce6325c7edac9a/codewars/5-extract-domain-name-from-url.js

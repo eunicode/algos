@@ -13,6 +13,7 @@ Given a string `s`, find and return the first instance of a non-repeating charac
 If there is no such character, return '_'.
 
 Category: Arrays
+Level: Easy
 */
 
 /* =================================================================  
@@ -37,7 +38,7 @@ function firstNotRepeatingCharacter(s) {
         }
     });
 
-    console.log(obj);
+    console.log(obj);    
 
     // Convert object into an array
     // Object.entries() creates an array of arrays. 
@@ -47,9 +48,9 @@ function firstNotRepeatingCharacter(s) {
 
     // Iterate through array, if a "key" has a "value" of 1, then that key is a unique character.
     // Return the first unique character. 
-    for (let i = 0; i < objToArray.length; i++) {
-        if (objToArray[i][1] === 1) {
-            return objToArray[i][0];
+    for (const pair of objToArray) {
+        if (pair[1] === 1) {
+            return pair[0];
         }
     }
 
@@ -78,13 +79,23 @@ console.log(firstNotRepeatingCharacter("abacabad"));
 ================================================================= */ 
 
 /* 
+TRAVERSAL ORDER OF OBJECT PROPERTIES
+
+Objects are unordered key/value-pair data structures.
+
+Questions: 
+Are properties added in an arbitrary order? // I don't think so. 
+When are object properties traversed/looped in a specified order, and when are they not?
+
 for...in
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
 
-A for...in loop iterates over the properties of an object in an arbitrary order
+A for...in loop iterates over the properties of an object in an arbitrary order...
 
 The traversal order of object properties in ES6
 http://2ality.com/2015/10/property-traversal-order-es6.html
+
+The ECMAScript 6 specification defines in which order the properties of an object should be traversed.
 
 Out Of Order Keys in ES6 Objects
 https://hackernoon.com/out-of-order-keys-in-es6-objects-d5cede7dc92e
@@ -92,4 +103,17 @@ https://hackernoon.com/out-of-order-keys-in-es6-objects-d5cede7dc92e
 Expecting keys to be in the same order they were added was a long-time bad assumption to make in JavaScript before ES6.
 ES6 introduced property key order, putting into the specification an expectation of how keys will be ordered.
 
+--------------------------------------------------------------------
+FOR-OF STATEMENT
+
+More concise than for loop
+Like for loop, you can break from it. 
+*/
+
+/* =================================================================  
+  TO DO
+================================================================= */ 
+
+/*
+Solve with maps?
 */

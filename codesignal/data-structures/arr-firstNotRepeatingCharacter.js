@@ -17,6 +17,18 @@ Level: Easy
 */
 
 /* =================================================================  
+  SOLUTIONS
+================================================================= */
+
+/*
+With nested arrays
+https://github.com/eunicode/algos/blob/9cc317b664f12626ff9b4523a9dfd1ae5e883e24/codesignal/data-structures/arr-firstNotRepeatingCharacter.js
+
+Current
+https://github.com/eunicode/algos/blob/master/codesignal/data-structures/arr-firstNotRepeatingCharacter.js
+*/
+
+/* =================================================================  
   CODE
 ================================================================= */
 
@@ -86,6 +98,8 @@ Objects are unordered key/value-pair data structures.
 Questions: 
 Are properties added in an arbitrary order? // I don't think so. 
 When are object properties traversed/looped in a specified order, and when are they not?
+// It depends if the operation traverses own keys or all (own + inherited) keys. 
+See 2ality post.
 
 for...in
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
@@ -96,6 +110,21 @@ The traversal order of object properties in ES6
 http://2ality.com/2015/10/property-traversal-order-es6.html
 
 The ECMAScript 6 specification defines in which order the properties of an object should be traversed.
+
+The following operations in ECMAScript 6 traverse the keys of properties 
+
+Own property keys:
+- Object.keys()
+- Object.getOwnPropertyNames()
+- Reflect.ownKeys()
+
+All (own and inherited) keys:
+- Reflect.enumerate()
+- for-in loop
+
+Traversing the own keys of an object 
+
+Enumerating the string keys of all enumerable properties
 
 Out Of Order Keys in ES6 Objects
 https://hackernoon.com/out-of-order-keys-in-es6-objects-d5cede7dc92e

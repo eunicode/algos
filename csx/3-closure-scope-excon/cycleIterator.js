@@ -17,10 +17,11 @@ After returning the last element of the array, the next invocation will return t
 ================================================================= */
 
 /*
-Version 1 - PRE-INCREMENT
+Version 1 - "PRE-INCREMENT"
 https://github.com/eunicode/algos/blob/7d5e0523da36573fc06d0f10ed75fcb6243000a7/csx/3-closure-scope-excon/cycleIterator.js
 
 Version 2 - POST-INCREMENT
+https://github.com/eunicode/algos/blob/962eb79b3c8cbd2991ef2daea6da07f57d078ea9/csx/3-closure-scope-excon/cycleIterator.js
 */
 
 /* =================================================================  

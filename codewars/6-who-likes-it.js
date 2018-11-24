@@ -18,7 +18,9 @@ Version 1: Control flow statements - conditionals
 https://github.com/eunicode/algos/blob/05b80792932d5449b37dbf6563c9695b403dbcd3/codewars/6-who-likes-it.js
 
 Version 2: Slightly refactored + type check
+https://github.com/eunicode/algos/blob/355481f1d75f4cf2cc6b1d6cd00c05ed06f6e020/codewars/6-who-likes-it.js
 
+Version 3: Use `throw` + `TypeError`
 */
 
 /* =================================================================  
@@ -26,9 +28,11 @@ Version 2: Slightly refactored + type check
 ================================================================= */
 
 function likes(names) {
+
     // Antipattern
     if (!(names instanceof Array)) {
-        return 'Error: Argument is not an array.'
+        // throw 'Argument is not an array';
+        throw new TypeError('Argument is not an array');
     }
 
     const numLength = names.length;
@@ -96,6 +100,8 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/condit
 ================================================================= */
 
 /*
+Better way of checking type of argument
+Better error handling
 */
 
 /*

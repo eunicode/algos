@@ -21,6 +21,7 @@ Version 2: Slightly refactored + type check
 https://github.com/eunicode/algos/blob/355481f1d75f4cf2cc6b1d6cd00c05ed06f6e020/codewars/6-who-likes-it.js
 
 Version 3: Use `throw` + `TypeError`
+https://github.com/eunicode/algos/blob/9a4d47a8b8415e8b31e06043bb0e8414816023f5/codewars/6-who-likes-it.js
 */
 
 /* =================================================================  
@@ -67,10 +68,11 @@ function likes(names) {
 // console.log(likes(['Max', 'John', 'Mark']));
 // 'Max, John and Mark like this'
 
-// console.log(likes(['Alex', 'Jacob', 'Mark', 'Max']));
+console.log(likes(['Alex', 'Jacob', 'Mark', 'Max']));
 // 'Alex, Jacob and 2 others like this'
 
-console.log(likes('Alex'));
+// console.log(likes('Alex'));
+// Error message
 
 /* =================================================================  
   NOTES
@@ -93,6 +95,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_e
 
 Making decisions in your code — conditionals
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
+
+--------------------------------------------------------------------
+INSTANCEOF, TYPEOF
+
+typeof [1, 2]; // 'object'
 */
 
 /* =================================================================  
@@ -102,6 +109,11 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/condit
 /*
 Better way of checking type of argument
 Better error handling
+
+--------------------------------------------------------------------
+ALTERNATIVE WAYS TO SOLVE
+- Object of options + Math.min(a, b) to select property 
+- Create array of true's and false's and use reduce() to count true's. 
 */
 
 /*

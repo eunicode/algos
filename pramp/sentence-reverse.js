@@ -26,6 +26,8 @@ Explain your solution and analyze its time and space complexities.
   CODE
 ================================================================= */
 
+/* eslint-disable */
+
 function reverseWords(arr) {
   // Join array into a string
   const str = arr.join('');
@@ -71,45 +73,43 @@ function reverseWords(arr) {
 
 /* eslint-disable */
 
-console.log(
-  reverseWords([
-    'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
-    'm', 'a', 'k', 'e', 's', '  ',
-    'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'
-  ])
-);
+// PASS
+// console.log(
+//   reverseWords([
+//     'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
+//     'm', 'a', 'k', 'e', 's', '  ',
+//     'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'
+//   ])
+// );
 
 /* Expected
-output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
-          'm', 'a', 'k', 'e', 's', '  ',
-          'p', 'e', 'r', 'f', 'e', 'c', 't' ]
+[ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
+  'm', 'a', 'k', 'e', 's', '  ',
+  'p', 'e', 'r', 'f', 'e', 'c', 't' ]
 */
 
+// FAIL
 // console.log(reverseWords([" "," "]));
+
 /* Expected: 
 [" "," "]
 */
 
-// console.log(reverseWords(["a"," "," ","b"]));
+// FAIL
+console.log(reverseWords(["a"," "," ","b"]));
+
 /* Expected:
 ["b"," "," ","a"]
 */
 
+// PASS
 // console.log(reverseWords(["h","e","l","l","o"]));
+
 /* Expected:  
 ["h","e","l","l","o"]
 */
 
-// console.log(reverseWords(
-//     ["p","e","r","f","e","c","t"," ",
-//     "m","a","k","e","s"," ",
-//     "p","r","a","c","t","i","c","e"])
-// );
-
-/* Expected:
-["p","r","a","c","t","i","c","e"," ","m","a","k","e","s"," ","p","e","r","f","e","c","t"]
-*/
-
+// FAIL
 // console.log(reverseWords(
 // ["y","o","u"," ","w","i","t","h"," ","b","e"," ","f","o","r","c","e"," ","t","h","e"," ","m","a","y"])
 // );
@@ -118,6 +118,7 @@ output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
 ["m","a","y"," ","t","h","e"," ","f","o","r","c","e"," ","b","e"," ","w","i","t","h"," ","y","o","u"]
 */
 
+// FAIL
 // console.log(reverseWords(
 //     ["g","r","e","a","t","e","s","t"," ","n","a","m","e"," ","f","i","r","s","t"," ","e","v","e","r"," ","n","a","m","e"," ","l","a","s","t"])
 // );

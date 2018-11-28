@@ -17,25 +17,25 @@ Additional arguments needed by the passed-in function will need to be passed int
 ================================================================= */
 
 /*
-*/
+ */
 
 /* =================================================================  
   CODE
 ================================================================= */
 
-/*ATTEMPT #1
+/* ATTEMPT #1
 function defineFirstArg(cb, firstNum) {
   return function inner(moreNum) {
     cb(firstNum, moreNum);
   }
-}*/
+} */
 
 function defineFirstArg(cb, firstNum) {
   return function inner(moreNum) {
     console.log({ firstNum });
     console.log({ moreNum });
     cb(firstNum, moreNum);
-  }
+  };
 }
 
 // function test(x) {
@@ -54,10 +54,10 @@ The function returned from defineFirstArg should invoke the passed-in function w
 The function returned from defineFirstArg should accept additional arguments and invoke the passed-in function with them
 */
 
-const subtract = function(big, small) { 
+const subtract = function(big, small) {
   console.log({ big });
   console.log({ small });
-  return big - small; 
+  return big - small;
 };
 
 const subFrom20 = defineFirstArg(subtract, 20);
@@ -65,7 +65,7 @@ console.log(subFrom20(5)); // should log: 15
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 MY QUESTION
@@ -76,10 +76,10 @@ CURRYING
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
-/* 
-*/
+/*
+ */
 
 /*
 --------------------------------------------------------------------

@@ -14,31 +14,30 @@ Tags: FUNDAMENTALS, STRINGS, NUMBERS, ARRAYS
 ================================================================= */
 
 /*
-*/
+ */
 
 /* =================================================================  
   CODE
 ================================================================= */
 
 function bingo(ticket, win) {
-    let count = 0;
+  let count = 0;
 
-    ticket.forEach(elm => {
-        const str = elm[0];
-        const codepoint = elm[1]; 
-        const letter = String.fromCharCode(codepoint);
-        // console.log({ letter });
+  ticket.forEach(elm => {
+    const str = elm[0];
+    const codepoint = elm[1];
+    const letter = String.fromCharCode(codepoint);
+    // console.log({ letter });
 
-        if (str.includes(letter)) {
-            count += 1;
-        }
-    });
-
-    if (count >= win) {
-        return 'Winner!';
-    } else {
-        return 'Loser!';
+    if (str.includes(letter)) {
+      count += 1;
     }
+  });
+
+  if (count >= win) {
+    return 'Winner!';
+  }
+  return 'Loser!';
 }
 
 /* =================================================================  
@@ -56,7 +55,7 @@ console.log(bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1));
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 Glyph --> (Font)          --> Code Point --> (Encoding) --> Bytes
@@ -79,10 +78,10 @@ https://www.iemoji.com/view/emoji/895/smileys-people/face-with-open-mouth
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
-/* 
-*/
+/*
+ */
 
 /*
 --------------------------------------------------------------------

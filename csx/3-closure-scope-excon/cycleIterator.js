@@ -29,23 +29,24 @@ https://github.com/eunicode/algos/blob/962eb79b3c8cbd2991ef2daea6da07f57d078ea9/
 ================================================================= */
 
 function cycleIterator(arr) {
-    // We store count in the outer function, so it doesn't get reset after function inner runs.
-    // This local scope is better than the global scope bc global variables result in collisions.
-    // `count` is available to `inner` bc of lexical scoping.
-    // `count` survives bc of closure.
-    let index = 0;
+  // We store count in the outer function, so it doesn't get reset after function inner runs.
+  // This local scope is better than the global scope bc global variables result in collisions.
+  // `count` is available to `inner` bc of lexical scoping.
+  // `count` survives bc of closure.
+  let index = 0;
 
-    return function inner() {
-        // POST-INCREMENT
-        // When post-incrementing, you can avoid index - 1, bc index is equal to 0.
-        const day = arr[index++]; // At this point, index = 0
+  return function inner() {
+    // POST-INCREMENT
+    // When post-incrementing, you can avoid index - 1, bc index is equal to 0.
+    const day = arr[index++]; // At this point, index = 0
 
-        if (index >= arr.length) { // Now, index = 1
-            index = 0;
-        }
-
-        return day;
+    if (index >= arr.length) {
+      // Now, index = 1
+      index = 0;
     }
+
+    return day;
+  };
 }
 
 /* =================================================================  
@@ -71,7 +72,7 @@ console.log(getDay());
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 REMAINDER OPERATOR
@@ -96,10 +97,10 @@ Does outer aka [[Scope]] = VariableEnvironment or execution context?
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
-/* 
-*/
+/*
+ */
 
 /*
 --------------------------------------------------------------------

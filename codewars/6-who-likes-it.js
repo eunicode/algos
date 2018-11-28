@@ -29,27 +29,30 @@ https://github.com/eunicode/algos/blob/9a4d47a8b8415e8b31e06043bb0e8414816023f5/
 ================================================================= */
 
 function likes(names) {
+  // Antipattern
+  if (!(names instanceof Array)) {
+    // throw 'Argument is not an array';
+    throw new TypeError('Argument is not an array');
+  }
 
-    // Antipattern
-    if (!(names instanceof Array)) {
-        // throw 'Argument is not an array';
-        throw new TypeError('Argument is not an array');
-    }
+  const numLength = names.length;
 
-    const numLength = names.length;
-
-    if (numLength <= 0) {
-        return `no one likes this`;
-    } else if (numLength === 1) {
-        return `${names[0]} likes this`;
-    } else if (numLength === 2) {
-        return `${names[0]} and ${names[1]} like this`;
-    } else if (numLength === 3) {
-        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
-    } else if (numLength >= 4) {
-        const count = numLength - 2;
-        return `${names[0]}, ${names[1]} and ${count} others like this`;
-    } 
+  if (numLength <= 0) {
+    return `no one likes this`;
+  }
+  if (numLength === 1) {
+    return `${names[0]} likes this`;
+  }
+  if (numLength === 2) {
+    return `${names[0]} and ${names[1]} like this`;
+  }
+  if (numLength === 3) {
+    return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+  }
+  if (numLength >= 4) {
+    const count = numLength - 2;
+    return `${names[0]}, ${names[1]} and ${count} others like this`;
+  }
 }
 
 /* =================================================================  

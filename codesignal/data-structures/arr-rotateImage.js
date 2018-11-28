@@ -36,50 +36,50 @@ a[i].length = a.length,
 ================================================================= */
 
 /*
-*/
+ */
 
 /* =================================================================  
   CODE
 ================================================================= */
 
 function rotateImage(a) {
-    // Length of given array
-    const numArr = a.length;
-    // console.log({ numArr });
+  // Length of given array
+  const numArr = a.length;
+  // console.log({ numArr });
 
-    // New rotated array
-    const rotatedArr = [];
+  // New rotated array
+  const rotatedArr = [];
 
-    // Push empty arrays
-    for (let i = 0; i < numArr; i++) {
-        rotatedArr.push([]);
-    }
-    // console.log({ rotatedArr });
+  // Push empty arrays
+  for (let i = 0; i < numArr; i++) {
+    rotatedArr.push([]);
+  }
+  // console.log({ rotatedArr });
 
-    // Iterate given array backwards
-    for (let i = a.length - 1; i >= 0; i--) {
-        // Iterate sub-array. 
-        // Every element in the last sub-array (main array - index 2) becomes the first element in the 
-        // new sub-arrays (sub-array - index 1). 
-        // i = 2
-        // a[i] = [7,8,9]
-        // [7,8,9].forEach( (elm, i) => mainArr[i].push(elm))
-        // [4,5,6].forEach(...)
-        // [1,2,3].forEach(...)
-        // i iterates main array backwards
-        // idx iterates main array forwards.
-        // forEach() iterates sub-array forwards.
-        a[i].forEach( (elm, idx) => {
-            // rotatedArr[0].push(7)
-            // rotatedArr[1].push(8)
-            // rotatedArr[2].push(9)
-            rotatedArr[idx].push(elm);
-            // const reverseI = Math.abs((a.length - 1) - i); // Unnecessary bc we can use forEach() index parameter 
-        });
-    }
-    
-    // console.log({ rotatedArr });
-    return rotatedArr;
+  // Iterate given array backwards
+  for (let i = a.length - 1; i >= 0; i--) {
+    // Iterate sub-array.
+    // Every element in the last sub-array (main array - index 2) becomes the first element in the
+    // new sub-arrays (sub-array - index 1).
+    // i = 2
+    // a[i] = [7,8,9]
+    // [7,8,9].forEach( (elm, i) => mainArr[i].push(elm))
+    // [4,5,6].forEach(...)
+    // [1,2,3].forEach(...)
+    // i iterates main array backwards
+    // idx iterates main array forwards.
+    // forEach() iterates sub-array forwards.
+    a[i].forEach((elm, idx) => {
+      // rotatedArr[0].push(7)
+      // rotatedArr[1].push(8)
+      // rotatedArr[2].push(9)
+      rotatedArr[idx].push(elm);
+      // const reverseI = Math.abs((a.length - 1) - i); // Unnecessary bc we can use forEach() index parameter
+    });
+  }
+
+  // console.log({ rotatedArr });
+  return rotatedArr;
 }
 
 /* =================================================================  
@@ -113,6 +113,8 @@ Rotating means a switcheroo
 ================================================================= */
 
 /*
+Solve without nested for loops
+Solve this task in-place (with O(1) additional memory)
 */
 
 /*

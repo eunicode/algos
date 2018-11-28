@@ -31,56 +31,56 @@ Tags: Fundamentals */
 ================================================================= */
 
 function WhatIsTheTime(timeInMirror) {
-    // Get the hour from the given string
-    const hour = Number.parseInt(timeInMirror.slice(0, 2), 10);
-    console.log({ hour });
+  // Get the hour from the given string
+  const hour = Number.parseInt(timeInMirror.slice(0, 2), 10);
+  console.log({ hour });
 
-    // Get the minutes from the given string
-    const min = Number.parseInt(timeInMirror.slice(-2), 10);
+  // Get the minutes from the given string
+  const min = Number.parseInt(timeInMirror.slice(-2), 10);
 
-    let newHour;
+  let newHour;
 
-    // 11 - oldHour = newHour
-    // Except when oldHour is 12, then newHour is 11
-    // and when oldHour is 11, then newHour is 12
-    if (hour === 12) {
-        newHour = 11;
-    } else if (hour === 11) {
-        newHour = 12;
-    } else {
-        newHour = 11 - hour;
-        console.log({ newHour });
-    }
+  // 11 - oldHour = newHour
+  // Except when oldHour is 12, then newHour is 11
+  // and when oldHour is 11, then newHour is 12
+  if (hour === 12) {
+    newHour = 11;
+  } else if (hour === 11) {
+    newHour = 12;
+  } else {
+    newHour = 11 - hour;
+    console.log({ newHour });
+  }
 
-    // 60 - oldMinutes = newMinutes
-    let newMin = 60 - min;
-    console.log({ newMin });
+  // 60 - oldMinutes = newMinutes
+  let newMin = 60 - min;
+  console.log({ newMin });
 
-    // If you have 60 minutes, then add an hour, and reset minutes to 0. 
-    if (newMin === 60) {
-        newHour = newHour + 1;
-        newMin = 0;
-    }
+  // If you have 60 minutes, then add an hour, and reset minutes to 0.
+  if (newMin === 60) {
+    newHour += 1;
+    newMin = 0;
+  }
 
-    // Add 0 if hour is a single digit.
-    if (newHour.toString().length === 1) {
-        newHour = `0${newHour}`;
-        // console.log('hi');
-    }
+  // Add 0 if hour is a single digit.
+  if (newHour.toString().length === 1) {
+    newHour = `0${newHour}`;
+    // console.log('hi');
+  }
 
-    // Add 0 if minute is a single digit.
-    if (newMin.toString().length === 1) {
-        newMin = `0${newMin}`;
-    }
+  // Add 0 if minute is a single digit.
+  if (newMin.toString().length === 1) {
+    newMin = `0${newMin}`;
+  }
 
-    return `${newHour}:${newMin}`;
+  return `${newHour}:${newMin}`;
 }
 
 /* =================================================================  
   TESTS
 ================================================================= */
 
-console.log(WhatIsTheTime("06:35")); //05:25"
+console.log(WhatIsTheTime('06:35')); // 05:25"
 // console.log(WhatIsTheTime("11:59")); //12:01"
 // console.log(WhatIsTheTime("12:02")); //11:58"
 
@@ -91,7 +91,7 @@ console.log(WhatIsTheTime("06:35")); //05:25"
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* You can use template strings to turn numbers into strings 
 newHour = `0${newHour}`; 

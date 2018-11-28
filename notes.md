@@ -42,4 +42,47 @@ https://github.com/wesbos/dotfiles/blob/master/.eslintrc
 
 ---
 
+DISABLE ESLINT ON FILES
+
+Disable ESLint for a file
+https://evanhahn.com/disable-eslint-for-a-file/
+
+`/* eslint-disable */`
+
+Turning off eslint rule for a specific file<br>
+https://stackoverflow.com/questions/34764287/turning-off-eslint-rule-for-a-specific-file
+
+```
+/* eslint no-use-before-define: 0 */  // --> OFF
+/* eslint no-use-before-define: 2 */  // --> ON
+```
+
+.eslintignore file
+
+```
+/* eslint-disable */
+/* eslint-enable */
+```
+
+---
+
+ESLint Rules
+
+Disallow return before else (no-else-return)
+https://eslint.org/docs/rules/no-else-return
+
+consistent-return
+https://eslint.org/docs/rules/consistent-return
+
+Require or disallow named function expressions (func-names)
+https://eslint.org/docs/rules/func-names
+
+operator-assignment
+https://eslint.org/docs/rules/operator-assignment
+
+no-plusplus
+https://eslint.org/docs/rules/no-plusplus
+
+---
+
 Don't mix package managers (yarn and npm).

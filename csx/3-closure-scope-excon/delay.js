@@ -16,9 +16,9 @@ HINT - research setTimeout();
 ================================================================= */
 
 function delay(cb, time) {
-    return function() {
-        setTimeout(cb, time);
-    }
+  return function() {
+    setTimeout(cb, time);
+  };
 }
 
 /* =================================================================  
@@ -32,12 +32,12 @@ function delay(cb, time) {
 let count = 0;
 const delayedFunc = delay(() => count++, 1000);
 delayedFunc();
-console.log(count); 					    // should print '0'
+console.log(count); // should print '0'
 setTimeout(() => console.log(count), 1000); // should print '1' after 1 second
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 Code rundown: 
@@ -117,7 +117,7 @@ Source: https://javascriptweblog.wordpress.com/2010/10/25/understanding-javascri
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
 /* 
 Solve this without using a global variable.

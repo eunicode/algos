@@ -1,3 +1,7 @@
+/* =================================================================  
+  INSTRUCTIONS
+================================================================= */
+
 /*
 JavaScript Algorithms and Data Structures Projects: Cash Register
 https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/cash-register/
@@ -15,23 +19,29 @@ Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for th
 Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
 */
 
+/* =================================================================  
+  CODE
+================================================================= */
+
+/* eslint-disable */
+
 function checkCashRegister(price, cash, cid) {
   // Convert everything to cents (integers) to avoid floating point decimals
 
-  // Customer's change 
-  let diff = Math.round((cash - price) * 100);
+  // Customer's change
+  const diff = Math.round((cash - price) * 100);
   console.log({ diff });
 
   // Total amount of cash in register
   // Convert to cents
-  let cidTotal = cid.map((curr) => Math.round(curr[1] * 100));
+  let cidTotal = cid.map(curr => Math.round(curr[1] * 100));
   // Add everything up
   cidTotal = cidTotal.reduce((acc, curr) => acc + curr, 0);
   console.log({ cidTotal });
 
   // Create a reference table of types of cash to values
   const cashTable = {
-    "ONE HUNDRED": 10000,
+    'ONE HUNDRED': 10000,
     TWENTY: 2000,
     TEN: 1000,
     FIVE: 500,
@@ -49,8 +59,8 @@ function checkCashRegister(price, cash, cid) {
     return acc;
   }, {});
   console.log({ cidTable });
-  // Example cidTable:  
-  // { 
+  // Example cidTable:
+  // {
   //   'ONE HUNDRED': 10000,
   //    TWENTY: 6000,
   //    TEN: 2000,
@@ -59,7 +69,7 @@ function checkCashRegister(price, cash, cid) {
   //    QUARTER: 425,
   //    DIME: 310,
   //    NICKEL: 205,
-  //    PENNY: 101 
+  //    PENNY: 101
   // }
 
   let change = [];
@@ -67,67 +77,64 @@ function checkCashRegister(price, cash, cid) {
   let diffUpdate = diff;
 
   for (const key in cashTable) {
-
     let changeValue = 0;
     let cidTypeValue = cidTable[key];
-    let cashTypeValue = cashTable[key];
-    
+    const cashTypeValue = cashTable[key];
+
     if (diffUpdate >= cashTypeValue) {
       // cashTable and cidTable have same keys
       // cidTypeValue needs to be > 0, because we can't give a bill in change if it doesn't exist
       while (diffUpdate >= cashTypeValue && cidTypeValue > 0) {
-
-        diffUpdate = diffUpdate - cashTypeValue;
-        cidTypeValue = cidTypeValue - cashTypeValue;
+        diffUpdate -= cashTypeValue;
+        cidTypeValue -= cashTypeValue;
         // console.log({ cidTypeValue });
-        changeValue = changeValue + cashTypeValue;
-
+        changeValue += cashTypeValue;
       } // while
 
       change.push([key, changeValue]);
-
-    } // first if 
-
+    } // first if
   }
 
   // Find the total amount of change created from cash in cash register
-  const checkChange = change.reduce((acc, curr) => {
-    return acc + curr[1];
-  }, 0);
+  const checkChange = change.reduce((acc, curr) => acc + curr[1], 0);
   console.log({ checkChange });
   console.log({ change });
 
-  // If the generated change is equal to the total amount of cash in cash register and the required 
-  // change, the cash register is now closed. 
+  // If the generated change is equal to the total amount of cash in cash register and the required
+  // change, the cash register is now closed.
   if (checkChange === cidTotal && checkChange === diff) {
-    return { status: "CLOSED", change: cid };
+    return { status: 'CLOSED', change: cid };
   }
 
   // If the generated change is equal to the required change, we have successfully generated change.
   if (checkChange === diff) {
     // console.log({ change })
-    change = change.map( curr => [curr[0], curr[1]/100] );
-    return { status: "OPEN", change: change };
-  } 
+    change = change.map(curr => [curr[0], curr[1] / 100]);
+    return { status: 'OPEN', change };
+  }
 
   // If the generated change is not equal to the required change, it's bc we have insufficient funds.
-  else {
-    return { status: "INSUFFICIENT_FUNDS", change: [] };
-  }
+  return { status: 'INSUFFICIENT_FUNDS', change: [] };
 }
 
+/* =================================================================  
+  TESTS
+================================================================= */
+
 // TEST #1
-console.log(checkCashRegister(3.26, 100, [
-  ["PENNY", 1.01],
-  ["NICKEL", 2.05],
-  ["DIME", 3.1],
-  ["QUARTER", 4.25],
-  ["ONE", 90],
-  ["FIVE", 55],
-  ["TEN", 20],
-  ["TWENTY", 60],
-  ["ONE HUNDRED", 100]
-]));
+console.log(
+  checkCashRegister(3.26, 100, [
+    ['PENNY', 1.01],
+    ['NICKEL', 2.05],
+    ['DIME', 3.1],
+    ['QUARTER', 4.25],
+    ['ONE', 90],
+    ['FIVE', 55],
+    ['TEN', 20],
+    ['TWENTY', 60],
+    ['ONE HUNDRED', 100]
+  ])
+);
 
 // ANSWER #1
 /* 

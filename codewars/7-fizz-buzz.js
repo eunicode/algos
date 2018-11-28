@@ -21,29 +21,32 @@ Tags: ALGORITHMS, FUNDAMENTALS, NUMBERS, ARRAYS
 ================================================================= */
 
 function fizzbuzz(n) {
-    // Generate an array with a range from 1 to n
-    const range = generateRange(n);
-    console.log({ range });
+  // Generate an array with a range from 1 to n
+  const range = generateRange(n);
+  console.log({ range });
 
-    const newRange = range.map( elm => {
-        if (elm % 3 === 0 && elm % 5 === 0) {
-            return "FizzBuzz";
-        } else if (elm % 3 === 0) {
-            return "Fizz";
-        } else if (elm % 5 === 0) {
-            return "Buzz";
-        } else return elm;
-    });
+  const newRange = range.map(elm => {
+    if (elm % 3 === 0 && elm % 5 === 0) {
+      return 'FizzBuzz';
+    }
+    if (elm % 3 === 0) {
+      return 'Fizz';
+    }
+    if (elm % 5 === 0) {
+      return 'Buzz';
+    }
+    return elm;
+  });
 
-    return newRange;
+  return newRange;
 }
 
 function generateRange(length) {
-    const range = [...new Array(length + 1).keys()];
-    // console.log({ range }); // [0, 1, 2, 3, 4, 5]
-    range.splice(0, 1);
-    // console.log({ range }); // [1, 2, 3, 4, 5]
-    return range;
+  const range = [...new Array(length + 1).keys()];
+  // console.log({ range }); // [0, 1, 2, 3, 4, 5]
+  range.splice(0, 1);
+  // console.log({ range }); // [1, 2, 3, 4, 5]
+  return range;
 }
 
 // generateRange(5);

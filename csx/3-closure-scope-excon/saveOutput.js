@@ -16,16 +16,15 @@ When this happens, the returned function will return an object with all previous
 ================================================================= */
 
 function saveOutput(fxn, str) {
-    const store = {};
+  const store = {};
 
-    return function inner(doesItMatch) {
-        if (doesItMatch === str) {
-            return store;
-        } else {
-            store[doesItMatch] = fxn(doesItMatch);
-            return fxn(doesItMatch);
-        }
+  return function inner(doesItMatch) {
+    if (doesItMatch === str) {
+      return store;
     }
+    store[doesItMatch] = fxn(doesItMatch);
+    return fxn(doesItMatch);
+  };
 }
 
 /* =================================================================  
@@ -37,7 +36,9 @@ function saveOutput(fxn, str) {
 // The function returned from saveOutput should return an object with all previously passed-in arguments and outputs when called with the password string
 
 // Uncomment these to check your work!
-const multiplyBy2 = function(num) { return num * 2; };
+const multiplyBy2 = function(num) {
+  return num * 2;
+};
 const multBy2AndLog = saveOutput(multiplyBy2, 'boo');
 console.log(multBy2AndLog(2)); // should log: 4
 console.log(multBy2AndLog(9)); // should log: 18
@@ -45,7 +46,7 @@ console.log(multBy2AndLog('boo')); // should log: { 2: 4, 9: 18 }
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 What happens if you name your inner function?
@@ -67,10 +68,10 @@ and remains attached to a function that also has outlived the same execution con
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
-/* 
-*/
+/*
+ */
 
 /*
 --------------------------------------------------------------------

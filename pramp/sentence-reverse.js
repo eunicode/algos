@@ -20,59 +20,64 @@ Explain your solution and analyze its time and space complexities.
 ================================================================= */
 
 /*
-*/
+ */
 
 /* =================================================================  
   CODE
 ================================================================= */
 
 function reverseWords(arr) {
-    // Join array into a string
-    const str = arr.join('');
-    console.log('str: ', str);
+  // Join array into a string
+  const str = arr.join('');
+  console.log('str: ', str);
 
-    // Split string into arrays
-    const splitArr = str.split(' ');
-    console.log('splitArr: ', splitArr);
+  // Split string into arrays
+  const splitArr = str.split(' ');
+  console.log('splitArr: ', splitArr);
 
-    // Clone and reverse array
-    // `reverse()` is a mutator method 
-    const splitClone = [...splitArr];
-    console.log('splitClone: ', splitClone);
-    const reverse = splitClone.reverse();
-    console.log('reverse: ', reverse);
+  // Clone and reverse array
+  // `reverse()` is a mutator method
+  const splitClone = [...splitArr];
+  console.log('splitClone: ', splitClone);
+  const reverse = splitClone.reverse();
+  console.log('reverse: ', reverse);
 
-    // 
-    let container = [];
+  //
+  let container = [];
 
-    // Split words into letters
-    reverse.forEach( elm => {
-        if (elm === '') {
-            // container.push([' ']);
-            console.log('elm1: ', elm);
-            container = container.concat(' ');
-        } else {
-            console.log('elm2: ', elm);
-            const letters = elm.split('');
-            // container.push(letters);
-            console.log({ letters });
-            container = container.concat(letters);
-        }
-    });
+  // Split words into letters
+  reverse.forEach(elm => {
+    if (elm === '') {
+      // container.push([' ']);
+      console.log('elm1: ', elm);
+      container = container.concat(' ');
+    } else {
+      console.log('elm2: ', elm);
+      const letters = elm.split('');
+      // container.push(letters);
+      console.log({ letters });
+      container = container.concat(letters);
+    }
+  });
 
-    // console.log({ container });
-    // console.log(container);
-    return container;
+  // console.log({ container });
+  // console.log(container);
+  return container;
 }
 
 /* =================================================================  
   TESTS
 ================================================================= */
-console.log(reverseWords(
-    [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
+
+/* eslint-disable */
+
+console.log(
+  reverseWords([
+    'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
     'm', 'a', 'k', 'e', 's', '  ',
-    'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
-));
+    'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'
+  ])
+);
 
 /* Expected
 output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
@@ -106,14 +111,14 @@ output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
 */
 
 // console.log(reverseWords(
-    // ["y","o","u"," ","w","i","t","h"," ","b","e"," ","f","o","r","c","e"," ","t","h","e"," ","m","a","y"])
+// ["y","o","u"," ","w","i","t","h"," ","b","e"," ","f","o","r","c","e"," ","t","h","e"," ","m","a","y"])
 // );
 
 /* Expected:
 ["m","a","y"," ","t","h","e"," ","f","o","r","c","e"," ","b","e"," ","w","i","t","h"," ","y","o","u"]
 */
 
-// console.log(reverseWords( 
+// console.log(reverseWords(
 //     ["g","r","e","a","t","e","s","t"," ","n","a","m","e"," ","f","i","r","s","t"," ","e","v","e","r"," ","n","a","m","e"," ","l","a","s","t"])
 // );
 
@@ -123,7 +128,7 @@ output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 Why aren't semicolons allowed in console.log()?
@@ -131,10 +136,10 @@ Why aren't semicolons allowed in console.log()?
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
-/* 
-*/
+/*
+ */
 
 /*
 --------------------------------------------------------------------

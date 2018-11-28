@@ -1,4 +1,6 @@
-// INSTRUCTIONS
+/* =================================================================  
+  INSTRUCTIONS
+================================================================= */
 
 /*
 Extract the domain name from a URL
@@ -16,7 +18,9 @@ Tags: FUNDAMENTALS, PARSING, STRINGS, REGULAR EXPRESSIONS
 DECLARATIVE PROGRAMMING, ADVANCED LANGUAGE FEATURES
 */
 
-// MY SOLUTIONS
+/* =================================================================  
+  SOLUTIONS
+================================================================= */
 
 /*
 Solve by controlling flow with conditional structures (if... else). 
@@ -24,9 +28,13 @@ https://github.com/eunicode/algos/blob/c2274b4c61b4c76f2e842bf7d6ce6325c7edac9a/
 The order of if statements is significant.
 */
 
+/* =================================================================  
+  CODE
+================================================================= */
+
 function domainName(url) {
   let urlStr = url.toLowerCase();
-  console.log('original string: ', urlStr)
+  console.log('original string: ', urlStr);
 
   const opt1 = /www\./;
 
@@ -38,39 +46,35 @@ function domainName(url) {
 
   if (opt2.test(url) === true) {
     if (opt2_1.test(url) === true) {
-      urlStr = urlStr.replace(opt2_1, "");
-      console.log("2.1: ", urlStr)
-    } 
-    else {
-      urlStr = urlStr.replace(opt2, "");
-      console.log("2: ", urlStr)
+      urlStr = urlStr.replace(opt2_1, '');
+      console.log('2.1: ', urlStr);
+    } else {
+      urlStr = urlStr.replace(opt2, '');
+      console.log('2: ', urlStr);
     }
-  } 
-
-  else if (opt3.test(url) === true) {
+  } else if (opt3.test(url) === true) {
     if (opt3_1.test(url) === true) {
-      urlStr = urlStr.replace(opt3_1, "");
-      console.log("3.1: ", urlStr)
-    } 
-    else {
-      urlStr = urlStr.replace(opt3, "");
-      console.log("3: ", urlStr);
+      urlStr = urlStr.replace(opt3_1, '');
+      console.log('3.1: ', urlStr);
+    } else {
+      urlStr = urlStr.replace(opt3, '');
+      console.log('3: ', urlStr);
     }
+  } else if (opt1.test(url) === true) {
+    urlStr = urlStr.replace(opt1, '');
+    console.log('1: ', urlStr);
   }
-
-  else if (opt1.test(url) === true) {
-    urlStr = urlStr.replace(opt1, "");
-    console.log("1: ", urlStr);
-  } 
 
   const domain = /[a-z\-\d]+/;
 
   return urlStr.match(domain).join();
 }
 
-console.log(domainName("https://www.1a-l93xok7f4beowp4.biz/error"));
+console.log(domainName('https://www.1a-l93xok7f4beowp4.biz/error'));
 
-// TESTS
+/* =================================================================  
+  TESTS
+================================================================= */
 
 /*
 q0viljjfur7suu01bj.br
@@ -102,7 +106,9 @@ How can we check if the first part of the string is 'www.' or 'http'?
 Slice the string? 
 */
 
-// NOTES
+/* =================================================================  
+  NOTES
+================================================================= */
 
 /*
 Remember that replace() needs a second argument, what to replace the match with.

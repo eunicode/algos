@@ -1,6 +1,6 @@
 /* =================================================================  
   INSTRUCTIONS
-================================================================= */ 
+================================================================= */
 
 /* 
 
@@ -23,43 +23,43 @@ Tags: MATHEMATICS, NUMBERS
 
 /* =================================================================  
   CODE
-================================================================= */ 
+================================================================= */
 
 function solution(number) {
-    // Check if number is negative. If so, we can return 0, because the problem
-    // stipulates that we add up multiples of 3 or 5 BELOW the given number
-    if (number < 0) {
-        return 0;
+  // Check if number is negative. If so, we can return 0, because the problem
+  // stipulates that we add up multiples of 3 or 5 BELOW the given number
+  if (number < 0) {
+    return 0;
+  }
+
+  // Create an array with a range of numbers from 0 to x; x is exclusive.
+  const emptyArr = new Array(number);
+  const range = [...emptyArr.keys()];
+  console.log({ range });
+
+  const multiples = [];
+
+  // Add multiples of 3 to array
+  range.forEach(curr => {
+    if (curr % 3 === 0) {
+      multiples.push(curr);
     }
+  });
+  console.log({ multiples });
 
-    // Create an array with a range of numbers from 0 to x; x is exclusive.
-    const emptyArr = new Array(number);
-    const range = [...emptyArr.keys()];
-    console.log({ range });
+  // Add multiples of 5 to array if that multiple isn't already in the array
+  range.forEach(curr => {
+    if (curr % 5 === 0 && multiples.includes(curr) === false) {
+      multiples.push(curr);
+    }
+  });
+  console.log({ multiples });
 
-    const multiples = [];
+  // Sum up array
+  const total = multiples.reduce((acc, curr) => acc + curr, 0);
+  console.log({ total });
 
-    // Add multiples of 3 to array
-    range.forEach( curr => {
-        if (curr % 3 === 0) {
-            multiples.push(curr);
-        }
-    });
-    console.log({ multiples });
-
-    // Add multiples of 5 to array if that multiple isn't already in the array
-    range.forEach( curr => {
-        if (curr % 5 === 0 && multiples.includes(curr) === false) {
-            multiples.push(curr);
-        }
-    });
-    console.log({ multiples });
-
-    // Sum up array
-    const total = multiples.reduce( (acc, curr) => acc + curr, 0);
-    console.log({ total });
-
-    return total;
+  return total;
 }
 
 console.log(solution(0));
@@ -74,7 +74,7 @@ console.log(solution(0));
 
 /* =================================================================  
   NOTES
-================================================================= */  
+================================================================= */
 
 /*
 

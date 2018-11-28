@@ -49,7 +49,7 @@ My tags: recursion
 
 /* =================================================================  
   THE SOLUTIONS
-================================================================= */  
+================================================================= */
 
 /*
 
@@ -73,7 +73,7 @@ execution context has been popped off the call stack.
 
 /* =================================================================  
   THE CODE
-================================================================= */ 
+================================================================= */
 
 function seven(m) {
   let count = 0;
@@ -81,38 +81,38 @@ function seven(m) {
   function recursion(num) {
     // Get last digit of given number
     const lastDigit = num % 10;
-    console.log("lastDigit: ", lastDigit);
+    console.log('lastDigit: ', lastDigit);
 
     // Get rest of digit
-    const headDigit = Math.trunc(num/10);
-    console.log("headDigit: ", headDigit);
+    const headDigit = Math.trunc(num / 10);
+    console.log('headDigit: ', headDigit);
 
-    // If headDigit is 10x, reducedDigit is x - 2y. 
+    // If headDigit is 10x, reducedDigit is x - 2y.
     // Else reducedDigit is just num and we can return the array.
     let reducedDigit = num;
 
     if (headDigit.toString().length >= 2) {
       reducedDigit = headDigit - 2 * lastDigit;
-      console.log("reducedDigit: ", reducedDigit);
+      console.log('reducedDigit: ', reducedDigit);
     } else {
       return [num, count];
     }
 
     const array = [];
 
-    // Increment count if num is 10x and we go through the x - 2y process. 
+    // Increment count if num is 10x and we go through the x - 2y process.
     count++;
 
     // Account for edge case seven(0)
     if (num === 0 && count === 1) {
       count = 0;
     }
-    console.log("count: ", count);
+    console.log('count: ', count);
 
     // Recursion
 
     // Base case
-    // Once headDigit is two digits, that will be the last step because reducedDigit will be the number we want. 
+    // Once headDigit is two digits, that will be the last step because reducedDigit will be the number we want.
     if (headDigit.toString().length === 2) {
       array.push(reducedDigit, count);
       // Reset count to 0 when function has completed running (call stack)
@@ -122,16 +122,14 @@ function seven(m) {
 
     // Recursive case
     // If headDigit is > two digits, we can do more steps.
-    else {
-      return recursion(reducedDigit);
-    }
+    return recursion(reducedDigit);
   }
 
   return recursion(m);
 }
 
 // Edge cases
-// The given number is not 10x, that is, the number is only one digit. 
+// The given number is not 10x, that is, the number is only one digit.
 // seven(0) // [0, 0]
 // seven(7) // [7, 0]
 
@@ -154,7 +152,7 @@ console.log(seven(1603));
 
 /* =================================================================  
   THE NOTES
-================================================================= */  
+================================================================= */
 
 /*
 

@@ -32,49 +32,51 @@ https://github.com/eunicode/algos/blob/master/codesignal/data-structures/arr-fir
   CODE
 ================================================================= */
 
+/* eslint-disable */
+
 function firstNotRepeatingCharacter(s) {
-    // Split string into array of characters
-    const arr = s.split('');
-    console.log({ arr });
+  // Split string into array of characters
+  const arr = s.split('');
+  console.log({ arr });
 
-    // Store count for each character in object
-    const obj = {};
+  // Store count for each character in object
+  const obj = {};
 
-    // If object has key (character), increment its value
-    // If object doesn't have key, add key and set its value to 1
-    arr.forEach(element => {
-        if (obj.hasOwnProperty(element)) {
-            obj[element] = obj[element] + 1;
-        } else {
-            obj[element] = 1;
-        }
-    });
-
-    console.log(obj);    
-
-    // Convert object into an array
-    // Object.entries() creates an array of arrays. 
-    // The inner array has two values. The first is the key, the second is the value.
-    const objToArray = Object.entries(obj);
-    console.log({ objToArray });
-
-    // Iterate through array, if a "key" has a "value" of 1, then that key is a unique character.
-    // Return the first unique character. 
-    for (const pair of objToArray) {
-        if (pair[1] === 1) {
-            return pair[0];
-        }
+  // If object has key (character), increment its value
+  // If object doesn't have key, add key and set its value to 1
+  arr.forEach(element => {
+    if (obj.hasOwnProperty(element)) {
+      obj[element] = obj[element] + 1;
+    } else {
+      obj[element] = 1;
     }
+  });
 
-    // If there are no unique characters, return '_' string
-    return '_';
+  console.log(obj);
+
+  // Convert object into an array
+  // Object.entries() creates an array of arrays.
+  // The inner array has two values. The first is the key, the second is the value.
+  const objToArray = Object.entries(obj);
+  console.log({ objToArray });
+
+  // Iterate through array, if a "key" has a "value" of 1, then that key is a unique character.
+  // Return the first unique character.
+  for (const pair of objToArray) {
+    if (pair[1] === 1) {
+      return pair[0];
+    }
+  }
+
+  // If there are no unique characters, return '_' string
+  return '_';
 }
 
 /* =================================================================  
   TESTS
 ================================================================= */
 
-console.log(firstNotRepeatingCharacter("abacabad"));
+console.log(firstNotRepeatingCharacter('abacabad'));
 // Expected Output: "c"
 
 // Input: "abacabaabacaba"
@@ -88,7 +90,7 @@ console.log(firstNotRepeatingCharacter("abacabad"));
 
 /* =================================================================  
   NOTES
-================================================================= */ 
+================================================================= */
 
 /* 
 TRAVERSAL ORDER OF OBJECT PROPERTIES
@@ -141,7 +143,7 @@ Like for loop, you can break from it.
 
 /* =================================================================  
   TO DO
-================================================================= */ 
+================================================================= */
 
 /*
 Solve with maps?

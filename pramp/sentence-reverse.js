@@ -34,7 +34,8 @@ function reverseWords(arr) {
   console.log('str: ', str);
 
   // Split string into arrays
-  const splitArr = str.split(' ');
+  // const splitArr = str.split(' '); // This doesn't work properly for more than two spaces in a row!
+  const splitArr = str.split(/(\s+)/); // Capturing group is necessary for spaces to be preserved
   console.log('splitArr: ', splitArr);
 
   // Clone and reverse array
@@ -70,8 +71,6 @@ function reverseWords(arr) {
 /* =================================================================  
   TESTS
 ================================================================= */
-
-/* eslint-disable */
 
 // PASS
 // console.log(
@@ -128,18 +127,12 @@ console.log(reverseWords(["a"," "," ","b"]));
 */
 
 /* =================================================================  
-  NOTES
-================================================================= */
-
-/* 
-Why aren't semicolons allowed in console.log()?
-*/
-
-/* =================================================================  
   TO DO
 ================================================================= */
 
 /*
+Will the thing separating the words always be one space? 
+const splitArr = str.split(/(\s+)/); 
  */
 
 /*

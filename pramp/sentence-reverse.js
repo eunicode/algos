@@ -20,7 +20,21 @@ Explain your solution and analyze its time and space complexities.
 ================================================================= */
 
 /*
- */
+Stage 1
+https://github.com/eunicode/algos/blob/f10e20752c1fdad233161a3042314d4152001edb/pramp/sentence-reverse.js
+
+This was actually not a solution. It only worked bc the space unit had two spaces in it.
+['p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
+'m', 'a', 'k', 'e', 's', '  ',
+'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'
+]
+
+Stage 2
+https://github.com/eunicode/algos/blob/bd6e8efcc0a29bf60ff83a9f49ff0234131977b8/pramp/sentence-reverse-notes.js
+
+split() + regex + capturing groups
+
+*/
 
 /* =================================================================  
   CODE
@@ -38,26 +52,20 @@ function reverseWords(arr) {
   const splitArr = str.split(/(\s+)/); // Capturing group is necessary for spaces to be preserved
   console.log('splitArr: ', splitArr);
 
-  // Clone and reverse array
-  // `reverse()` is a mutator method
+  // Clone and reverse array. reverse()` is a mutator method
   const splitClone = [...splitArr];
-  console.log('splitClone: ', splitClone);
+  // console.log('splitClone: ', splitClone);
   const reverse = splitClone.reverse();
-  console.log('reverse: ', reverse);
+  // console.log('reverse: ', reverse);
 
-  //
+  // Store new array
   let container = [];
 
-  // Split words into letters
+  // Split words into letters. If it's a space, push a space.
   reverse.forEach(elm => {
-    if (elm === '') {
-      // container.push([' ']);
-      console.log('elm1: ', elm);
-      container = container.concat(' ');
-    } else {
+    if (elm !== '') {
       console.log('elm2: ', elm);
       const letters = elm.split('');
-      // container.push(letters);
       console.log({ letters });
       container = container.concat(letters);
     }
@@ -72,43 +80,45 @@ function reverseWords(arr) {
   TESTS
 ================================================================= */
 
-// PASS
-// console.log(
-//   reverseWords([
-//     'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
-//     'm', 'a', 'k', 'e', 's', '  ',
-//     'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'
-//   ])
-// );
-
-/* Expected
-[ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
-  'm', 'a', 'k', 'e', 's', '  ',
-  'p', 'e', 'r', 'f', 'e', 'c', 't' ]
-*/
-
-// FAIL
-// console.log(reverseWords([" "," "]));
+// Test Case #1
+console.log(reverseWords([" "," "]));
 
 /* Expected: 
 [" "," "]
+
+str = '  ';
+const splitArr = str.split(/(\s+)/); // [ '', '  ', '' ]
+string = emptystr / space emptystr space / emptystr
+
 */
 
-// FAIL
-console.log(reverseWords(["a"," "," ","b"]));
+// Test Case #1.2
+// console.log(reverseWords([" ", "", " "]));
+
+// Test Case #2
+// console.log(reverseWords(["a"," "," ","b"]));
 
 /* Expected:
 ["b"," "," ","a"]
 */
 
-// PASS
+// Test Case #3
 // console.log(reverseWords(["h","e","l","l","o"]));
 
 /* Expected:  
 ["h","e","l","l","o"]
 */
 
-// FAIL
+// Test Case #4
+// console.log(reverseWords(
+// ["p","e","r","f","e","c","t"," ","m","a","k","e","s"," ","p","r","a","c","t","i","c","e"]
+// ))
+
+/* Expected:
+["p","r","a","c","t","i","c","e"," ","m","a","k","e","s"," ","p","e","r","f","e","c","t"]
+*/
+
+// Test Case #5
 // console.log(reverseWords(
 // ["y","o","u"," ","w","i","t","h"," ","b","e"," ","f","o","r","c","e"," ","t","h","e"," ","m","a","y"])
 // );
@@ -117,7 +127,7 @@ console.log(reverseWords(["a"," "," ","b"]));
 ["m","a","y"," ","t","h","e"," ","f","o","r","c","e"," ","b","e"," ","w","i","t","h"," ","y","o","u"]
 */
 
-// FAIL
+// Test Case #6
 // console.log(reverseWords(
 //     ["g","r","e","a","t","e","s","t"," ","n","a","m","e"," ","f","i","r","s","t"," ","e","v","e","r"," ","n","a","m","e"," ","l","a","s","t"])
 // );

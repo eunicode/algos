@@ -61,9 +61,12 @@ function reverseWords(arr) {
   // Store new array
   let container = [];
 
-  // Split words into letters. If it's a space, push a space.
+  // Split words into letters. 
   reverse.forEach(elm => {
-    if (elm !== '') {
+    if (elm !== '') { 
+      // When using split(), remember every character is couched between empty strings. 
+      // So `" "` is `[emptystr, space, emptystr]`
+      // We don't need to do anything to empty string elements
       console.log('elm2: ', elm);
       const letters = elm.split('');
       console.log({ letters });

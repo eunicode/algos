@@ -19,7 +19,7 @@ https://www.pramp.com/challenge/8noLWxLP6JUZJ2bA2rnx
   CODE
 ================================================================= */
 
-/* eslint-disabl e */
+/* eslint-disable */
 
 /* Plan: We need to go from step2 to step1. 
 We get to step2 by step3. 
@@ -30,78 +30,61 @@ The limit for step2 is prevStep2 + step3 (100 + 110 or 111 + 214)
 Or it could be step3 + 122x. 122 is z.  
 */
 function decrypt(word) {
-  // Turn input into array
+  // Turn input string into array of letters
   const lettersArr = word.split('');
-  console.log({ lettersArr });
+  // console.log({ lettersArr });
 
   // Turn letters into codepoints
   const asciiArr = lettersArr.map(chr => chr.charCodeAt(0));
   console.log({ asciiArr }); // [ 100, 110, 111, 116, 113 ]
 
-  // Store decrypted letters
-  const decryptArr = [];
+  // Container to store decrypted letters
+  const decryptedArr = [];
 
   // Keep track of previous number. This needs to be outside the for loop
-  let cdptStep2 = asciiArr[0];
+  let prevStep2 = asciiArr[0];
+  // Other variables that need to be updated
+  let currStep2 = 0;
+  let currStep1 = 0;
+  let decryptedChar = '';
 
-  asciiArr.forEach((cdpt, idx) => {
+  asciiArr.forEach((currStep3, idx) => {
     // Decrypt first number by subtracting 1: x - 1
     if (idx === 0) {
-      const first = String.fromCharCode(asciiArr[0] - 1);
-      decryptArr.push(first);
-    } else if (idx === 1) {
-      const step2lim = cdpt + cdptStep2; // 210
-      console.log({ step2lim });
+      const firstStep1 = String.fromCharCode(asciiArr[0] - 1);
+      decryptedArr.push(firstStep1);
+    } else {
+      // currStep2 = currStep3 + 26x, so set currStep2 equal to currStep 3 initially 
+      currStep2 = currStep3;
 
-      // Clone current elm
-      let cdptCopy = cdpt; // 110
-
-      // Find cdptStep2, which is 214.
-      // We know 110 + 26x = 214.
-      // We know cdptStep2 is 100 + 114. We know a-z is 97-122. so the limit is 100 + 122
-      while (cdptCopy < step2lim) {
-        cdptCopy += 26;
+      // currStep2 = prevStep2 + currStep1
+      // currStep1 can be in the range of 97-122 (a-z)
+      // Therefore, the limit must be prevStep2 + 122
+      let limit = prevStep2 + 122;
+      
+      // Find currStep2
+      // currStep2 = currStep3 + 26x
+      // currStep2 is initially equal to currStep3
+      // So we can do currStep2 = currStep2 + 26
+      while (currStep2 <= limit - 26) { // Subtract 26 bc for the last true condition, we will add 26
+        currStep2 += 26;
       }
+      console.log({ currStep2 });
 
-      console.log({ cdptCopy }); // 214
+      // Find currStep1, the decrypted codepoint
+      currStep1 = currStep2 - prevStep2;
 
-      const decryptNum = cdptCopy - cdptStep2; // 214-100 = 114 or 'r'
-      // let decryptNum = cdpt - asciiArr[idx - 1];
-      decryptArr.push(String.fromCharCode(decryptNum));
-      // Update previous number
-      cdptStep2 = cdptCopy; // 214
-      console.log({ cdptStep2 });
-    }
+      // Get the letter from the decrypted codepoint and push
+      decryptedChar = String.fromCharCode(currStep1);
+      decryptedArr.push(decryptedChar);
 
-    // Decrypt other numbers by doing currentTotal - previousTotal
-    else {
-      // Limit is current elm + previous elm
-      const step2lim = cdpt + cdptStep2; // 210
-      console.log({ step2lim });
-
-      // Clone current elm
-      let cdptCopy = cdpt; // 110
-
-      // Find cdptStep2, which is 214.
-      // We know 110 + 26x = 214.
-      // We know cdptStep2 is 100 + 114. We know a-z is 97-122. so the limit is 100 + 122
-      while (cdptCopy < step2lim - 26) {
-        cdptCopy += 26;
-      }
-
-      console.log({ cdptCopy }); // 214
-
-      const decryptNum = cdptCopy - cdptStep2; // 214-100 = 114 or 'r'
-      // let decryptNum = cdpt - asciiArr[idx - 1];
-      decryptArr.push(String.fromCharCode(decryptNum));
-      // Update previous number
-      cdptStep2 = cdptCopy; // 214
-      console.log({ cdptStep2 });
+      // Update prevStep2
+      prevStep2 = currStep2;
     }
   });
 
-  console.log({ decryptArr });
-  return decryptArr.join('');
+  console.log({ decryptedArr });
+  return decryptedArr.join('');
 }
 
 /* =================================================================  
@@ -109,11 +92,11 @@ function decrypt(word) {
 ================================================================= */
 
 // Test Case #1
-console.log(decrypt('dnotq'));
+// console.log(decrypt('dnotq'));
 // output: "crime"
 
 // Test Case #2
-// console.log(decrypt('flgxswdliefy'));
+console.log(decrypt('flgxswdliefy'));
 // Expected: "encyclopedia"
 
 // Test Case #3

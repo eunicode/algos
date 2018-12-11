@@ -21,14 +21,6 @@ https://www.pramp.com/challenge/8noLWxLP6JUZJ2bA2rnx
 
 /* eslint-disable */
 
-/* Plan: We need to go from step2 to step1. 
-We get to step2 by step3. 
-110 -> 214 -> 114
-111 -> 319 -> 105
-We can go from step3 to step2 bc we know that step2 is step3-26x.
-The limit for step2 is prevStep2 + step3 (100 + 110 or 111 + 214)
-Or it could be step3 + 122x. 122 is z.  
-*/
 function decrypt(word) {
   // Turn input string into array of letters
   const lettersArr = word.split('');
@@ -120,6 +112,38 @@ console.log(decrypt('flgxswdliefy'));
 ================================================================= */
 
 /*
+Progression
+currStep3 -> currStep2 -> currStep1
+
+EUREKA MOMENT
+currStep2 = currStep3 + 26x
+
+TWO IMPORTANT EQUATIONS
+currStep2 = currStep3 + 26x
+currStep2 = prevStep2 + currStep1
+
+y = 110 + 26x
+y = 100 + o
+y = 100 + (97 to 122)
+Three unknowns, three equations
+
+TWO UNKNOWNS
+currStep2 (y)
+currStep1 (o)
+
+KNOWNS
+currStep3
+prevStep2
+
+SUBSTITUTION
+We know that currStep1 will be a value from 97-122. 
+Why? Because it is given that the input will always be lower cased latin letters.
+currStep2 = prevStep2 + (97-122)
+This means we know the limit for currStep2. 
+
+LIMIT
+The maximum currStep2 can be is prevStep2 + 122
+Since we know the limit, we can use a while loop. 
  */
 
 /* =================================================================  

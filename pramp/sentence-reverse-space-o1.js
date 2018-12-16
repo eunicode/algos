@@ -1,4 +1,26 @@
 /* =================================================================  
+  INSTRUCTIONS
+================================================================= */
+
+/*
+Sentence Reverse
+https://www.pramp.com/challenge/VKdqbrq6B1S5XAyGAOn4
+
+A more elegant and efficient approach is to reverse all the characters in arr and then reverse the characters in each word separately. 
+While the first reverse gives us the words in the reverse order as we wanted, it also reverses the characters of each word. 
+To fix that, we do the second reverse, which reverses each word separately.
+
+Reversing items in an array is done by a ‘mirror’ function, that swaps the items of every 2 indices with the same distance from the middle.
+
+Time Complexity: traversing the array twice with a constant number of actions for each item is linear O(N).
+
+Space Complexity: using iteration indices and one temp variable takes constant O(1) memory.
+
+If you have time left, ask your peer how the mirrorReverse function could be implemented with a single index. 
+It’s done with left to right linear iteration, and swapping arr[i] and arr[n-1-i] as long as i < n-1-i.
+*/
+
+/* =================================================================  
   PSEUDOCODE
 ================================================================= */
 
@@ -153,6 +175,31 @@ console.log(reverseWords(
 /*
 Where are the arrays being stored? 
 
+// Helper function - reverses the order of items in arr
+function mirrorReverse(arr, start, end) {
+  // reverse array
+
+  return arr;
+}
+
+function reverseWords(arr) {
+  mirrorReverse(arr, 0, len - 1);
+
+  // Reverse each word
+  
+  return arr;
+}
+
+mirrorReverse() mutates the given array in-place. 
+Then we continue mutating the array in reverseWords().
+These two functions have access to the same parameter. 
+This is bc we passed `arr` when we called mirrorReverse(). 
+This is why we have constant O(1) memory.
+The only new variables are the iteration indices (start, end), and the `temp` variable. 
+
+QUESTION
+I thought with functional programming we're not supposed to mutate arguments?
+
  */
 
 /* =================================================================  
@@ -160,6 +207,7 @@ Where are the arrays being stored?
 ================================================================= */
 
 /*
+Rewrite this with destructuring
  */
 
 /*

@@ -55,14 +55,14 @@ function defineFirstArg(cb, firstNum) {
 //   }
 // }
 
-// ATTEMPT #4
+// ATTEMPT #4 - WORKS WITH ONE PARAMETER
 // function defineFirstArg(passedFxn, firstArg) {
 //   return function inner(addArg) {
 //     return passedFxn(firstArg, addArg);
 //   }
 // }
 
-// SOLUTION #1 - REST + SPREAD
+// SOLUTION #1 - REST + SPREAD - WORKS WITH UNSPECIFIED NUMBER OF PARAMETERS
 function defineFirstArg(passedFxn, firstArg) {
   return function inner(...addArg) { // parameter - rest 
     return passedFxn(firstArg, ...addArg); // function call - spread

@@ -64,6 +64,13 @@ Closure = A function always has access to the context in which it was created.
 
 Closure = A variable environment [scope] that has outlived its execution context, 
 and remains attached to a function that also has outlived the same execution context. [CSX]
+
+Summary
+- the context function was created in
+- lexical scope
+- variable environment
+- scope
+
 */
 
 /* =================================================================  

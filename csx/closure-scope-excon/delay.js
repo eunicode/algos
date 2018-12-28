@@ -15,6 +15,8 @@ HINT - research setTimeout();
   CODE
 ================================================================= */
 
+/* eslint-disable */
+
 function delay(cb, time) {
   return function() {
     setTimeout(cb, time);
@@ -30,10 +32,14 @@ function delay(cb, time) {
 
 // UNCOMMENT THE CODE BELOW TO TEST DELAY
 let count = 0;
-const delayedFunc = delay(() => count++, 1000);
+
+const delayedFunc = delay( () => count++,  1000 );
+
 delayedFunc();
+
 console.log(count); // should print '0'
-setTimeout(() => console.log(count), 1000); // should print '1' after 1 second
+
+setTimeout( () => console.log(count),  1000 ); // should print '1' after 1 second
 
 /* =================================================================  
   NOTES
@@ -69,15 +75,26 @@ Function is invoked
 - Declared variables inside that context get put into execution context's VariableEnvironment.
 - The OuterLexicalEnvironmentReference (outerLex) property points to the function's [[scope]] property.
 
-When an execution context encounters a function definition, a new function object is created with the [[scope]] property, which references the *current* VariableEnvironment.
-When the function is invoked, the function's *new* VariableEnvironment's outerLex property is assigned the [[scope]] property's value (aka the *previous* VariableEnvironment).
+When an execution context encounters a function definition, a new function object is created with the [[scope]] property, which references the VariableEnvironment the function was created in.
+When the function is invoked, the function's *new* Lexical Environment's outerLex property is assigned the [[scope]] property's value (aka the *previous* VariableEnvironment).
+Scope chain. 
+In other words, functions remember the environment / execution context they were created in.
 
-Outer VariableEnvironment
+```
+var global = 'global';
+
+function one() {
+  var first = 1;
+}
+```
+
+Outer Lexical Environment (global execution context)
 {
-  variables
+  variables, 
+  outerLex: null
 }
 
-Inner VariableEnvironment
+Inner Lexical Environment
 { 
   variables, 
   outerLex: [[scope]] aka "Outer VariableEnvironment"
@@ -87,19 +104,23 @@ Lexical Environment
 1. the environment record - the actual place where the variable and function declarations are stored
 2. a reference to the outer environment - this means it has access to its outer lexical environment.
 
-The JavaScript engine creates an `outer environment` reference to the lexical environment. 
-The `outer reference` is the execution context in which the function was created.
+The JavaScript engine creates an `outerLex` reference to the outer lexical environment. 
+`outerLex` is the execution context in which the function was created.
 
 Execution Context 
 1. ThisBinding
-2. LexicalEnvironment 
-3. VariableEnvironment 
+Lexical Environment
+  2. LexicalEnvironment 
+  3. VariableEnvironment 
+
+LexicalEnvironment (lookup and change existing): resolve identifiers. 
+VariableEnvironment (add new): hold bindings made by variable declarations and function declarations. 
 
 function 
 - [[scope]] property
 - definition
 
-[[scope]] = current VariableEnvironment
+[[scope]] = current VariableEnvironment [function's birthplace]
 
 --------------------------------------------------------------------
 CLOSURE

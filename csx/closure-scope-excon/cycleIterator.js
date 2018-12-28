@@ -76,20 +76,27 @@ console.log(getDay());
 
 /* 
 REMAINDER OPERATOR
+
 When using the remainder operator, if the dividend is less than the divisor, the remainder operator will return the dividend. 
 Example: 4 % 8; // 4
 
+--------------------------------------------------------------------
 POST-INCREMENT VS PRE-INCREMENT
-index = index + 1;        
-const day = arr[index];   // has same effect as pre-incrementing
-    vs
+
+index = index + 1;  // has same effect as pre-incrementing      
+const day = arr[index];   
+
+  vs
+
 const day = arr[index++]; // post-increment
 
 const arr = ['a', 'b', 'c'];
 let index = 0;
 arr[index++]; // 'a'
 
+--------------------------------------------------------------------
 QUESTIONS
+
 Is `outer` stored inside the VariableEnvironment or execution context? 
 Does outer aka [[Scope]] = VariableEnvironment or execution context? 
 [[Scope]] vs scope?

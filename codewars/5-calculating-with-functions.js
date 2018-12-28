@@ -22,6 +22,8 @@ TAGS: FUNDAMENTALS, FUNCTIONS, CONTROL FLOW, BASIC LANGUAGE FEATURES, FUNCTIONAL
 ================================================================= */
 
 /*
+Version #1
+https://github.com/eunicode/algos/blob/77356a2c5425970aa6da3f669e8a1018a9688d72/codewars/5-calculating-with-functions.js
  */
 
 /* =================================================================  

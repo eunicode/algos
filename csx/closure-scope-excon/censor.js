@@ -26,6 +26,8 @@ Version #1
 https://github.com/eunicode/algos/blob/bab47c5907ecb69de8b1e8077906c892654c2014/csx/closure-scope-excon/censor.js
 
 Version #2
+https://github.com/eunicode/algos/blob/f9e943cd5782d54e8ba9e42a94acbcf8fc727191/csx/closure-scope-excon/censor.js
+
 Move variable declaration (str)
 
 Move `return str` statement

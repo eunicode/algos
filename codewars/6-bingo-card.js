@@ -36,43 +36,73 @@ There is a free space in the center!
   CODE
 ================================================================= */
 
+/* eslint-disable */
+
+// Helper function - Generate random number between two values, inclusive
 // Code credit: MDN
 function randomIntInclusive(min, max) {
-  // min = Math.ceil(min);
-  // max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min; // The `+ 1` makes the max inclusive
 }
 
 function getCard() {
   const bingoCard = [];
-  let b;
-  let i;
-  let n;
-  let g;
-  let o;
+  
+  // Store strings outside of while loop
+  let bNum = '';
+  let iNum = '';
+  let nNum = '';
+  let gNum = '';
+  let oNum = '';
 
-  // 26 - 5 = 21
-  while (bingoCard.length < 21) {
-    b = randomIntInclusive(1, 15);
-    bingoCard.push(`B${b}`);
+  while (bingoCard.length < 5) {
+    // Create letter-num string
+    bNum = `B${randomIntInclusive(1, 15)}`;
 
-    i = randomIntInclusive(16, 30);
-    bingoCard.push(`I${i}`);
+    // If the array does not contain the letter-num string, push the letter-num string.
+    if (!bingoCard.includes(bNum)) {
+      bingoCard.push(bNum);
+    }
+  }
 
-    n = randomIntInclusive(31, 45);
-    if (bingoCard.length === 13) {
-      // break; // free space
-      bingoCard.push('free space');
-    } else {
-      bingoCard.push(`N${n}`);
+  while (bingoCard.length < 10) {
+    iNum = `I${randomIntInclusive(16, 30)}`;
+
+    if (!bingoCard.includes(iNum)) {
+      bingoCard.push(iNum);
+    }
+  }
+
+  while (bingoCard.length < 15) {
+    nNum = `N${randomIntInclusive(31, 45)}`;
+
+    // Insert a free-space placeholder at index 13
+    if (bingoCard.length === 12) {
+      bingoCard.push('free-space');
     }
 
-    g = randomIntInclusive(46, 60);
-    bingoCard.push(`G${g}`);
-
-    o = randomIntInclusive(61, 75);
-    bingoCard.push(`O${o}`);
+    if (!bingoCard.includes(nNum)) {
+      bingoCard.push(nNum);
+    }
   }
+
+  while (bingoCard.length < 20) {
+    gNum = `G${randomIntInclusive(46, 60)}`;
+
+    if (!bingoCard.includes(gNum)) {
+      bingoCard.push(gNum);
+    }
+  }
+
+  while (bingoCard.length < 25) {
+    oNum = `O${randomIntInclusive(61, 75)}`;
+
+    if (!bingoCard.includes(oNum)) {
+      bingoCard.push(oNum);
+    }
+  }
+
+  // Remove 'free-space' placeholder
+  bingoCard.splice(12, 1);
 
   return bingoCard;
 }
@@ -88,6 +118,12 @@ console.log(getCard());
 ================================================================= */
 
 /* 
+OBSERVATIONS
+
+We have to return an array in the format B,B,B,B,B,I,I,I, etc. 
+Not B,I,N,G,O,B,I,N,G,O,etc
+
+--------------------------------------------------------------------
 WHILE LOOP
 
 The problem with while loops, there are no indices. You're not iterating an array.
@@ -99,6 +135,9 @@ RANDOM NUMBERS
 
 Math.random()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+Return value
+A floating-point, pseudo-random number between 0 (inclusive) and 1 (exclusive).
 
 Math.floor()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
@@ -122,6 +161,14 @@ Math.ceil(-7.04); // -7
 
 Generating random whole numbers in JavaScript in a specific range?
 https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+
+--------------------------------------------------------------------
+HOW TO CHECK IF AN ELEMENT EXISTS IN ARRAY
+
+indexOf()
+
+includes()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 
 */
 

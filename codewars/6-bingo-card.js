@@ -46,7 +46,7 @@ function randomIntInclusive(min, max) {
 
 function getCard() {
   const bingoCard = [];
-  
+
   // Store strings outside of while loop
   let bNum = '';
   let iNum = '';
@@ -130,6 +130,16 @@ The problem with while loops, there are no indices. You're not iterating an arra
 
 A while loop is similar to a for loop; the code in the block statement gets repeated over and over again. 
 
+Be careful with off-by-one errors when using array lengths in while loop conditions. 
+
+We want an array with 5 'elm' strings. 
+We do bingoCard.length is less than 5, not less than or equal to 5. 
+It's similar to conditions in for loops. We use i < array.length
+
+while (bingoCard.length < 5) {
+  bingoCard.push('elm');
+}
+
 --------------------------------------------------------------------
 RANDOM NUMBERS
 
@@ -170,6 +180,18 @@ indexOf()
 includes()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 
+--------------------------------------------------------------------
+HOW TO REMOVE AN ELEMENT FROM AN ARRAY
+
+splice()
+filter()
+slice()
+
+HOW TO REMOVE AN ITEM FROM AN ARRAY IN JAVASCRIPT
+https://flaviocopes.com/how-to-remove-item-from-array/
+
+How do I remove a particular element from an array in JavaScript?
+https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript
 */
 
 /* =================================================================  
@@ -177,6 +199,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ================================================================= */
 
 /*
+DRY up code
  */
 
 /*

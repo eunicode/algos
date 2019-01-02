@@ -134,6 +134,11 @@ Because the [[scope]] property prevents outer function variables from being garb
 
 Source: https://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/
 
+When a function finishes executing, its _execution context_ is removed from stack. 
+But the function's _lexical environment_ will still be in memory 
+if the lexical environment is referenced by the lexical environment of the inner function,
+and if the inner function is called in a context outside of the inner fxn's birthplace. 
+
 */
 
 /* =================================================================  

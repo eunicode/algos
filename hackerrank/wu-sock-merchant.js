@@ -76,8 +76,14 @@ How to update the value of a key in a Map
 How to increment a value in a JavaScript object?
 https://stackoverflow.com/questions/39590858/how-to-increment-a-value-in-a-javascript-object
 
+m.set('foo', m.get('foo') + 1);
+
 JavaScript - Map() increment value
 https://stackoverflow.com/questions/53584369/javascript-map-increment-value
+
+let map = new Map();
+map.set("a", {val: 1});
+map.get("a").val++;
 
 --------------------------------------------------------------------
 Map.prototype.forEach()

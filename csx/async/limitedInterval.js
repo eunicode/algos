@@ -3,6 +3,15 @@
 ================================================================= */
 
 /*
+Challenge: limitedInterval
+https://csx.codesmith.io/units/async/challenge-limited-interval
+
+Write a function called limitedInterval that accepts as arguments in this order -
+- callback function
+- wait time in milliseconds
+- limit time in milliseconds.
+
+limitedInterval should run the callback once every wait milliseconds, up to limit milliseconds, and then stop.
  */
 
 /* =================================================================  
@@ -56,7 +65,10 @@ limitedInterval(() => console.log('repeating'), 100, 550); // should log 'repeat
 /*
 LESSONS LEARNED
 
-setInterval() will repeatedly call the function until clearInterval() is called.
+- setInterval() will repeatedly call the callback function until clearInterval() is called.
+- You need to give setInterval() an ID in order to be able to stop it with clearInterval().
+- You also need to give clearInterval() the ID (the first argument). 
+- Be careful of off-by-one errors. If outer variable is 0, and you increment it inside an if block, then the if condition should be less than target.
 
 --------------------------------------------------------------------
 WindowOrWorkerGlobalScope.setInterval()
@@ -72,6 +84,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clear
 ================================================================= */
 
 /*
+Solve with setTimeout()
  */
 
 /*

@@ -3,6 +3,17 @@
 ================================================================= */
 
 /*
+350. Intersection of Two Arrays II
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
+
+Given two arrays, write a function to compute their intersection.
+Each element in the result should appear as many times as it shows in both arrays.
+The result can be in any order.
+
+Follow up:
+What if the given array is already sorted? How would you optimize your algorithm?
+What if nums1's size is small compared to nums2's size? Which algorithm is better?
+What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
  */
 
 /* =================================================================  
@@ -10,6 +21,9 @@
 ================================================================= */
 
 /*
+WIP solution for first longest sequence in both arrays (misunderstood the problem): 
+https://github.com/eunicode/algos/blob/4e798f9d72bae284bf4829e2a75c141040cd5a11/leetcode/interview-easy/arr-intersection-two-arrays-ii.js
+
  */
 
 /* =================================================================  
@@ -19,122 +33,36 @@
 /* eslint-disable */
 
 var intersect = function(nums1, nums2) {
-  // Label the smaller array `small`, and the bigger array `big`
-  const nums1L = nums1.length;
-  const nums2L = nums2.length;
+  // Find which array is shorter, and assign the shorter array to `short`,
+  // and the longer array to `long`
+  const len1 = nums1.length;
+  const len2 = nums2.length;
+  let short = nums1;
+  let long = nums2;
+  const intersection = [];
   
-  let small = [...nums1];
-  let big = [...nums2];
-  
-  if (nums1L > nums2L) {
-      small = [...nums2];
-      big = [...nums1];
-  } 
-  
-  // Store a collection of all possible combinations in array `big`
-  const bigCombos = [];
-  // [1,2,2,1] and [2,2]
-  // [4,9,5] and [9,4,9,8,4]
-
-  for (let i = 0; i < big.length; i++) {
-      for (let j = 0; j < big.length; j++) {
-          bigCombos.push(big.slice(i, j + 1)); // slice() ends extraction BEFORE endIndex
-      }
+  if (len1 > len2) {
+    short = [...nums2];
+    long = [...nums1]
   }
   
-  // console.log(bigCombos);
-
-  // Get rid of empty arrays 
-  const bigCombosFiltered = bigCombos.filter( (elm) => {
-      if (elm.length === 0) {
-          return false
-      }
-      return true;
-  });
-  
-  console.log(bigCombosFiltered);
-  
-  // Store a collection of all possible combinations in array `small`
-
-  const smallCombos = [];
-  
-  for (let i = 0; i < small.length; i++) {
-      for (let j = 0; j < small.length; j++) {
-          smallCombos.push(small.slice(i, j + 1));
-      }
+  // Iterate through `short` array. S
+  // See if element exists in `long` array. 
+  // If it does, push it to `intersection` and delete it from `long`.
+  for (const elm of short) {
+    const longIdx = long.indexOf(elm);
+    
+    if (longIdx !== -1) {
+      intersection.push(elm);
+      long.splice(longIdx, 1);
+    }
   }
   
-  // console.log(smallCombos);
-
-  // Get rid of empty arrays
-  const smallCombosFiltered = smallCombos.filter( elm => {
-      if (elm.length === 0) {
-          return false;
-      }
-      return true;
-  });
+  console.log({ intersection });
+  console.log({ long })
   
-  console.log(smallCombosFiltered);
-  
-  // Store all arrays that exist in both bigCombosFiltered and smallCombosFiltered
-  const matches = [];
-  
-  for (let i = 0; i < smallCombosFiltered.length; i++) {
-      for (let j = 0; j < bigCombosFiltered.length; j++) {
-          const test = compareArrays(smallCombosFiltered[i], bigCombosFiltered[j]);
-          
-          if (test === true) {
-              matches.push(smallCombosFiltered[i]);
-          }
-      }
-  }
-  
-  console.log(matches); // [ [ 2 ], [ 2 ], [ 2, 2 ], [ 2 ], [ 2 ] ]
-  
-  // Find the longest match
-  if (matches.length > 1) {   
-      const biggestArr = matches.reduce( (acc, curr) => {
-          if (curr.length > acc.length) {
-              acc = [...curr];
-              return acc;
-          } else {
-              return acc;
-          }
-          // Missing, what if the lengths are equal?
-      })
-      return biggestArr;
-  }
-  
-  // If there's only one match, return it
-  if (matches.length === 1) {
-      return matches[0];
-  } 
-  
-  // If there are no matches, return empty array
-  return [];
+  return intersection;
 };
-
-// Helper function
-function compareArrays(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
-      return false;
-  }
-  
-  // Turn array into a string so you can compare them
-  const str1 = arr1.reduce( (acc, curr) => {
-      return `${acc}${curr}`
-  });
-  
-  const str2 = arr2.reduce( (acc, curr) => {
-      return `${acc}${curr}`
-  });
-  
-  if (str1 === str2) {
-      return true;
-  }
-  
-  return false;
-}
 
 /* =================================================================  
   TESTS
@@ -168,6 +96,8 @@ We never increment `j`, so the block code will run forever, and `i` will keep in
 
 - slice() ends extraction BEFORE endIndex
 
+- The best way to delete an element from an array is with splice()
+
  */
 
 /* =================================================================  
@@ -175,6 +105,7 @@ We never increment `j`, so the block code will run forever, and `i` will keep in
 ================================================================= */
 
 /*
+Make runtime faster
  */
 
 /*

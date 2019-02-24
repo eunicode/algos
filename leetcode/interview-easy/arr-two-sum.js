@@ -30,9 +30,10 @@ RULES
 /* eslint-disable */
 
 var twoSum = function(nums, target) {
-  // Outer loop. Iterate `nums`
+  // Outer loop. Iterate `nums` array.
   for (let i = 0; i < nums.length; i++) {
-    // Sum element with other elements (distributive)
+    
+    // Second loop. Sum element with other elements (distributive)
     // j is i+1 bc if we've checked arr[0] + arr[1], then we've checked arr[1] + arr[0]
     for(let j = i + 1; j < nums.length; j++) {
       if (nums[i] + nums[j] === target) {

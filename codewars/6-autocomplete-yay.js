@@ -63,13 +63,19 @@ function autocomplete(input, dictionary) {
 
 console.log(autocomplete('ai', ['airplane','airport','apple','ball']));
 
-// TODO: Replace examples and use TDD development by writing your own tests
+// TODO: Add your tests here
+// Replace examples, and use TDD development by writing your own tests
 
-// These are some CW specific test methods available:
-//    Test.expect(boolean, [optional] message)
-//    Test.assertEquals(actual, expected, [optional] message)
-//    Test.assertSimilar(actual, expected, [optional] message)
-//    Test.assertNotEquals(actual, expected, [optional] message)
+// Starting from Node 10.x, [Mocha](https://mochajs.org) is used instead of our custom test framework.
+// [Codewars' assertion methods](https://github.com/Codewars/codewars.com/wiki/Codewars-JavaScript-Test-Framework)
+// are still available for now.
+//
+// For new tests, using [Chai](https://chaijs.com/) is recommended.
+// You can use it by requiring:
+//     const assert = require("chai").assert;
+// If the failure output for deep equality is truncated, `chai.config.truncateThreshold` can be adjusted.
+
+/* ------------------------------------------------------------------- */
 
 // NodeJS assert is also automatically required for you.
 //    assert(true)
@@ -81,11 +87,30 @@ console.log(autocomplete('ai', ['airplane','airport','apple','ball']));
 // var assert = require("chai").assert;
 // require("chai").should();
 
+/* ------------------------------------------------------------------- */
+
+// describe("Solution", function() {
+//   it("should test for something", function() {
+//     // Test.assertEquals(1 + 1, 2);
+//     // assert.strictEqual(1 + 1, 2);
+//   });
+// });
+
 // describe("Solution", function(){
 //   it("should test for something", function(){
 //     Test.assertEquals("actual", "expected", "This is just an example of how you can write your own TDD tests");
 //   });
 // });
+
+/* ------------------------------------------------------------------- */
+
+// These are some CW specific test methods available:
+//    Test.expect(boolean, [optional] message)
+//    Test.assertEquals(actual, expected, [optional] message)
+//    Test.assertSimilar(actual, expected, [optional] message)
+//    Test.assertNotEquals(actual, expected, [optional] message)
+
+/* ------------------------------------------------------------------- */
 
 /* =================================================================  
   NOTES

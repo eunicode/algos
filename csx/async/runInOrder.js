@@ -159,7 +159,7 @@ https://www.youtube.com/watch?v=micF_oeeeko
 // onFulfilled()'s promise gets resolved, then then()'s promise gets resolved. 
 // Since then()'s promise gets resolved, that calls the next then()'s onFullfilled function. 
 
-function runInOrder(fxns, times) {
+function runInOrder1(fxns, times) {
 
   let p = Promise.resolve();
 
@@ -193,6 +193,19 @@ function runInOrder(fxns, times) {
 //     });
 //   }
 // }
+
+/* -------------------------------------------------------------- */
+
+// SOLUTION #2 - SOLVE W/OUT PROMISES
+
+function runInOrder(fxns, times) {
+  let acc = 0;
+
+  for (let i = 0; i < times.length; i += 1) {
+    acc = acc + times[i];
+    setTimeout(fxns[i], acc);
+  }
+}
 
 /* =================================================================  
   TESTS
@@ -304,6 +317,7 @@ The onFulfilled handler function can also return a Promise.
 
 /*
 - ✓ Make it so that `runInOrder` will work no matter how many elements are in the `fxns` array or `times` array. 
+- Solve without promises
 - Use async/await
  */
 

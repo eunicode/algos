@@ -3,6 +3,7 @@
 ================================================================= */
 
 /*
+https://leetcode.com/problems/first-unique-character-in-a-string/
  */
 
 /* =================================================================  
@@ -53,6 +54,7 @@ var firstUniqChar = function(s) {
   
   const arr = [...s];
   
+  // O(N)
   for (let letter of arr) {
     if (mapp.has(letter)) {
       mapp.set(letter, 2);
@@ -61,8 +63,14 @@ var firstUniqChar = function(s) {
     }
   }
   
+  console.log({ mapp });
+
+  // O(1) bc mapp will have at 26 keys (the number of letters in alphabet)
   for (let [letter, count] of mapp) {
     if (count === 1) {
+      // O(N) bc we're searching an array
+      // but it is not O(N^2) bc we will do this step zero times or once,
+      // not N * N times.
       return arr.indexOf(letter);
     }
   }
@@ -70,12 +78,15 @@ var firstUniqChar = function(s) {
   return -1;
 };
 
-// Runtime: faster than 35.12% of JS submissions
-// Memory usage: less than 6.45% of JS submissions
-
 /* =================================================================  
   TESTS
 ================================================================= */
+
+// console.log(firstUniqChar('leetcode'));
+// return 0
+
+console.log(firstUniqChar('loveleetcode'));
+// return 2
 
 /* =================================================================  
   NOTES
@@ -89,7 +100,7 @@ var firstUniqChar = function(s) {
 ================================================================= */
 
 /*
-Does indexOf() have O(N) time complexity? 
+Does indexOf() have O(N) time complexity? Yes
 Can I use another method instead of indexOf()?
  */
 

@@ -25,7 +25,9 @@ You should not use + or any arithmetic operators.
 3 = 011
  */
 
-function getSum(a, b) {
+ // ITERATIVE SOLUTION
+
+function getSumI(a, b) {
   // console.log('XOR: ', a ^ b);
   // console.log('AND: ', a & b);
 
@@ -51,6 +53,26 @@ function getSum(a, b) {
   }
 
   return sum;
+}
+
+/* -------------------------------------------------------------- */
+// RECURSIVE SOLUTION
+function getSum(a, b) {
+  let sum = 0;
+  let carry = 0;
+
+  // base case
+  if (b === 0) {
+    return a
+  }
+  // recursive case
+  else {
+    sum = a ^ b;
+    carry = (a & b) >> 1;
+    a = sum;
+    b = carry;
+    return getSum(a, b);
+  }
 }
 
 /* =================================================================  

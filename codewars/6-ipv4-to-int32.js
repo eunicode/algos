@@ -79,7 +79,14 @@ console.log(ipToInt32('128.32.10.1')); // 2149583361
 Tricky points
 - Type conversion: strings, numbers
 - 1 should be written as 00000001
- */
+
+--------------------------------------------------------------------
+TEMPLATE LITERAL + WHILE LOOP
+
+while (stage1.length < 8) {
+  stage1 = `0${stage1}` // Equivalent to stage1 = '0' + stage1
+  
+*/
 
 /* =================================================================  
   TO DO

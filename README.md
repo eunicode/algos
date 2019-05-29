@@ -8,7 +8,7 @@ I've solved all the algorithm challenges (16 basic, 21 intermediate, 5 advanced)
 
 ## CodeWars
 
-I've finally leveled up to 6 kyu in CodeWars! Kyu is a term borrowed from Go, a Chinese board game, and indicates the number of degrees away from master level (dan). Beginners start at 8 kyu. You can view my complete collection of solutions on my CodeWars [profile](https://www.codewars.com/users/scifishelf/completed_solutions).
+I've finally leveled up to 5 kyu in CodeWars! Kyu is a term borrowed from Go, a Chinese board game, and indicates the number of degrees away from master level (dan). Beginners start at 8 kyu. You can view my complete collection of solutions on my CodeWars [profile](https://www.codewars.com/users/scifishelf/completed_solutions).
 
 ## CodeSignal
 

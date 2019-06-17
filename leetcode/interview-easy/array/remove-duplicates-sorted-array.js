@@ -8,10 +8,14 @@ https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/arra
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/solution/
 https://leetcode.com/submissions/detail/231867166/
 
+Given a sorted array nums, remove the duplicates in-place
+
+Example #1
 Given nums = [1,1,2],
 Your function should return length = 2, 
 with the first two elements of nums being 1 and 2 respectively.
 
+Example #2
 Given nums = [0,0,1,1,1,2,2,3,3,4],
 Your function should return length = 5, 
 with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
@@ -27,6 +31,9 @@ Do not allocate extra space for another array, you must do this by modifying the
 
 /* 
 ASSURANCES / OBSERVATIONS
+The array will be sorted
+Since we're removing duplicates, we only want unique numbers. 
+We only need to return the length
 
 --------------------------------------------------------------------
 PLAN
@@ -38,13 +45,19 @@ PLAN
 
 /* eslint-disable */
 
+// SOLUTION #1 - SPLICE()
+
 let removeDuplicates = function(nums) {
   let deleteCount = 0;
+  // Copy array length bc when you start splicing, the array length will change
   const lengthDupe = nums.length;
 
+  // [1,1,2,3]
   for (let i = 0; i < lengthDupe; i++) {
+    // If two adjacent elements are equal, delete the first one
     if (nums[i - deleteCount] === nums[i + 1 - deleteCount]) {
       nums.splice(i - deleteCount, 1);
+
       deleteCount += 1;
     }
   }
@@ -53,6 +66,9 @@ let removeDuplicates = function(nums) {
 
   return nums.length;
 };
+
+/* -------------------------------------------------------------- */
+
 
 /* =================================================================  
   TESTS
@@ -86,6 +102,7 @@ With the splice() method, the duplicates get removed even if the array isn't sor
 
 /*
 Solve without using `lengthDupe`
+Solve without using splice()
  */
 
 /* =================================================================  

@@ -47,28 +47,54 @@ PLAN
 
 // SOLUTION #1 - SPLICE()
 
-let removeDuplicates = function(nums) {
-  let deleteCount = 0;
-  // Copy array length bc when you start splicing, the array length will change
-  const lengthDupe = nums.length;
+// let removeDuplicates = function(nums) {
+//   let deleteCount = 0;
+//   // Copy array length bc when you start splicing, the array length will change
+//   const lengthDupe = nums.length;
 
-  // [1,1,2,3]
-  for (let i = 0; i < lengthDupe; i++) {
-    // If two adjacent elements are equal, delete the first one
-    if (nums[i - deleteCount] === nums[i + 1 - deleteCount]) {
-      nums.splice(i - deleteCount, 1);
+//   // [1,1,2,3]
+//   for (let i = 0; i < lengthDupe; i++) {
+//     // If two adjacent elements are equal, delete the first one
+//     if (nums[i - deleteCount] === nums[i + 1 - deleteCount]) {
+//       nums.splice(i - deleteCount, 1);
 
-      deleteCount += 1;
-    }
-  }
+//       deleteCount += 1;
+//     }
+//   }
 
-  console.log({ nums });
+//   console.log({ nums });
 
-  return nums.length;
-};
+//   return nums.length;
+// };
 
 /* -------------------------------------------------------------- */
+// SOLUTION #2 - TWO POINTER TECHNIQUE
 
+/* `slow` will point to the last unique number
+`fast` will move ahead to find unique numbers
+When we find unique numbrs, we will overwrite duplicates with unique numbers,
+and we will update `slow`
+*/
+
+const removeDuplicates = function(nums) {
+  let slow = 0;
+  let fast = 1;
+
+  for (; fast < nums.length; fast++) {
+    // If `slow` and `fast` are different numbers
+    if (nums[slow] !== nums[fast]) {
+      // Overwrite the element after `slow`
+      nums[slow + 1] = nums[fast];
+
+      slow += 1;
+    }
+    // If `slow` and `fast` are the same numbers, do nothing. Just increment `fast`
+  }
+
+  // We did not change length of array.
+  // But I can return `slow + 1` bc `slow` is the index of the last unique number
+  return slow + 1;
+};
 
 /* =================================================================  
   TESTS
@@ -82,7 +108,7 @@ let removeDuplicates = function(nums) {
 
 // console.log(removeDuplicates([0,3,3,5,5,7]));
 
-console.log(removeDuplicates([6,6,3,2,1,1,1]));
+console.log(removeDuplicates([6, 6, 3, 2, 1, 1, 1]));
 
 /* =================================================================  
   NOTES

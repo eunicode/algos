@@ -70,10 +70,15 @@ PLAN
 /* -------------------------------------------------------------- */
 // SOLUTION #2 - TWO POINTER TECHNIQUE
 
-/* `slow` will point to the last unique number
-`fast` will move ahead to find unique numbers
-When we find unique numbrs, we will overwrite duplicates with unique numbers,
-and we will update `slow`
+/* `slow` will point to the last unique number.
+`fast` will move ahead to find unique numbers.
+We will compare `slow` and `fast`.
+When we find unique numbers, we will overwrite duplicates with unique numbers,
+and we will update `slow`.
+`fast` will point to the unique number, so we can overwrite the element after 
+`slow` with the `fast` value.
+When we increment `slow`, `slow` will now point to the latest unique number.
+Since the array is sorted, `fast` can just keep going ahead. 
 */
 
 const removeDuplicates = function(nums) {

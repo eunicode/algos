@@ -6,6 +6,8 @@
 14. Longest Common Prefix
 https://leetcode.com/problems/longest-common-prefix/
 
+Intro to Data Structure: Array and String
+
 Tags: easy, string
 
 --------------------------------------------------------------------

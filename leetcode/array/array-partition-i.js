@@ -76,7 +76,9 @@ function bubbleSort(arr) {
                           TESTS
 ================================================================= */
 
-console.log(arrayPairSum([1,4,3,2])); // 4
+/* eslint-enable */
+
+console.log(arrayPairSum([1, 4, 3, 2])); // 4
 // Explantion: min(1,2) + min(3,4) = 1 + 3 = 4
 
 /* =================================================================  
@@ -114,6 +116,7 @@ C3 = ditto
 /*
 Improve Bubble Sort algo by using a do while loop
 Use a sorting algo with better time complexity
+Solve with two-pointer technique
  */
 
 /* =================================================================  

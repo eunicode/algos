@@ -62,6 +62,7 @@ console.log(singleNumber([4,1,2,1,2])); // 4
 ================================================================= */
 
 /*
+Solve without using indexOf() and lastIndexOf()
  */
 
 /*

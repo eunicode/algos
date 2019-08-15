@@ -52,15 +52,17 @@ PLAN
 
 /* eslint-disable */
 
+// ATTEMPT #1 
+
 /* INPUT
 [["Salad", "Tomato", "Cucumber", "Salad", "Sauce"],
 ["Pizza", "Tomato", "Sausage", "Sauce", "Dough"],
 ["Quesadilla", "Chicken", "Cheese", "Sauce"],
 ["Sandwich", "Salad", "Bread", "Tomato", "Cheese"]] */
 
-function groupingDishes(dishes) {
+function groupingDishes1(dishes) {
 
-  // Create dish object
+  // Create dish object with entree as key, and object of ingredients as value
   const dishObj = {};
 
   for (let i = 0; i < dishes.length; i++) {
@@ -150,6 +152,84 @@ function groupingDishes(dishes) {
   return finalA;
 }
 
+/* -------------------------------------------------------------- */
+
+// ATTEMPT #2
+
+function groupingDishes(dishes) {
+  // Create hash table with ingredient as key, and array of entrees as value
+  const ht = {};
+  
+  for (let i = 0; i < dishes.length; i++) {
+    let entree = dishes[i][0]; // salad
+    
+    for (let j = 1; j < dishes[i].length; j++) {
+      let ing = dishes[i][j]; // tomato
+      
+      // If hash table has ingredient, push entree to array
+      if (ht.hasOwnProperty(ing)) {
+        ht[ing].push(entree);
+      } 
+      // If hash table doesn't have ingredient, add ingredient-entreeArray property
+      else {
+        ht[ing] = [entree];
+      }
+    }
+  }
+  
+  // console.log( ht );
+  
+  // Alphabetize entrees
+  for (let ing in ht) {
+    if (ht.hasOwnProperty(ing)) {
+      ht[ing].sort(); // sort() mutates array in-place
+    }
+  }
+  // console.log( ht );
+  
+  // Create a 2D array
+  // Remove properties with array length less than 2
+  // Combine key and value into one array
+  
+  const ingBucket = [];
+  
+  for (let ing in ht) {
+    if (ht.hasOwnProperty(ing)) {
+      if (ht[ing].length >= 2) {
+        ingBucket.push([ing, ...ht[ing]]);
+      }
+    }
+  }
+  
+  // console.log( ingBucket );
+  
+  ingBucket.sort( (a, b) => {
+    // console.log('hi: ', a[0]);
+    let ingA = a[0].toUpperCase();
+    let ingB = b[0].toUpperCase();
+    // console.log('swap')
+    
+    // -1 = a first 
+    // e.g. a = 65, z = 90
+    if (ingA < ingB) { // move a left
+      return -1;
+    }
+    
+    // 1 = b first
+    else if (ingA > ingB) { // move b left
+      return 1;
+    }
+    
+    else {
+      return 0;
+    }
+  });
+  
+  // console.log( ingBucket );
+  
+  return ingBucket;
+}
+
 /* =================================================================  
                           TESTS
 ================================================================= */
@@ -186,6 +266,37 @@ console.log(
 ["Nuts", "Fried Rice", "Salad"],
 ["Onions", "Fried Rice", "Pasta"]]
 */
+
+console.log(
+  groupingDishes([
+    ['Pasta', 'Tomato Sauce', 'Onions', 'Garlic'],
+    ['Chicken Curry', 'Chicken', 'Curry Sauce'],
+    ['Fried Rice', 'Rice', 'Onion', 'Nuts'],
+    ['Salad', 'Spinach', 'Nut'],
+    ['Sandwich', 'Cheese', 'Bread'],
+    ['Quesadilla', 'Chickens', 'Cheeseeee']
+  ])
+);
+
+// []
+
+console.log(
+  groupingDishes([
+    ['First', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+    ['Second', 'i', 'h', 'g', 'f', 'e', 'x', 'c', 'b', 'a']
+  ])
+);
+
+/* 
+[["a","First","Second"], 
+ ["b","First","Second"], 
+ ["c","First","Second"], 
+ ["e","First","Second"], 
+ ["f","First","Second"], 
+ ["g","First","Second"], 
+ ["h","First","Second"], 
+ ["i","First","Second"]]
+ */
 
 /* =================================================================  
                           NOTES

@@ -52,7 +52,7 @@ PLAN
 
 /* eslint-disable */
 
-// ATTEMPT #1 
+// ATTEMPT #1
 
 /* INPUT
 [["Salad", "Tomato", "Cucumber", "Salad", "Sauce"],
@@ -61,7 +61,6 @@ PLAN
 ["Sandwich", "Salad", "Bread", "Tomato", "Cheese"]] */
 
 function groupingDishes1(dishes) {
-
   // Create dish object with entree as key, and object of ingredients as value
   const dishObj = {};
 
@@ -123,14 +122,16 @@ function groupingDishes1(dishes) {
 
     for (const entree in dishObj) {
       if (dishObj.hasOwnProperty(entree)) {
-        if (dishObj[entree][ing]) { // dishObj['quesadilla']['cheese'] = 'e'
-          inventory.push(entree); 
+        if (dishObj[entree][ing]) {
+          // dishObj['quesadilla']['cheese'] = 'e'
+          inventory.push(entree);
           console.log({ inventory }); // [cheese, quesadilla]
         }
       }
     }
 
-    if (inventory.length > 2) { // Only add ingredient if it has >= 2 entrees. 1 ing + 2 ent = 3
+    if (inventory.length > 2) {
+      // Only add ingredient if it has >= 2 entrees. 1 ing + 2 ent = 3
       final.push(inventory);
     }
   }
@@ -156,54 +157,54 @@ function groupingDishes1(dishes) {
 
 // ATTEMPT #2
 
-function groupingDishes(dishes) {
+function groupingDishes2(dishes) {
   // Create hash table with ingredient as key, and array of entrees as value
   const ht = {};
-  
+
   for (let i = 0; i < dishes.length; i++) {
-    let entree = dishes[i][0]; // salad
-    
+    const entree = dishes[i][0]; // salad
+
     for (let j = 1; j < dishes[i].length; j++) {
-      let ing = dishes[i][j]; // tomato
-      
+      const ing = dishes[i][j]; // tomato
+
       // If hash table has ingredient, push entree to array
       if (ht.hasOwnProperty(ing)) {
         ht[ing].push(entree);
-      } 
+      }
       // If hash table doesn't have ingredient, add ingredient-entreeArray property
       else {
         ht[ing] = [entree];
       }
     }
   }
-  
+
   // console.log( ht );
-  
+
   // Alphabetize entrees
-  for (let ing in ht) {
+  for (const ing in ht) {
     if (ht.hasOwnProperty(ing)) {
       ht[ing].sort(); // sort() mutates array in-place
     }
   }
   // console.log( ht );
-  
+
   // Create a 2D array
   // Remove properties with array length less than 2
   // Combine key and value into one array
-  
+
   const ingBucket = [];
-  
-  for (let ing in ht) {
+
+  for (const ing in ht) {
     if (ht.hasOwnProperty(ing)) {
       if (ht[ing].length >= 2) {
         ingBucket.push([ing, ...ht[ing]]);
       }
     }
   }
-  
+
   // console.log( ingBucket );
-  
-  ingBucket.sort( (a, b) => {
+
+  ingBucket.sort((a, b) => {
     // console.log('hi: ', a[0]);
     let ingA = a[0].toUpperCase();
     let ingB = b[0].toUpperCase();
@@ -216,7 +217,7 @@ function groupingDishes(dishes) {
     }
     
     // 1 = b first
-    else if (ingA > ingB) { // move b left
+    if (ingA > ingB) { // move b left
       return 1;
     }
     
@@ -224,10 +225,82 @@ function groupingDishes(dishes) {
       return 0;
     }
   });
-  
+
   // console.log( ingBucket );
-  
+
   return ingBucket;
+}
+
+/* -------------------------------------------------------------- */
+
+// ATTEMPT #3 - SOLUTION
+
+/*
+ * Create a hash table, where the key is the ingredient, and the value is the entrees array
+ * Create the 2D array with for loop 
+ * - Check if entrees length is >= 2
+ * - If it is, alphabetize entrees
+ * - And push the ingredient+entree array
+ * Finally, alphabetize ingredients
+ */
+
+function groupingDishes(dishes) {
+  const ht = new Map();
+  const arr = [];
+
+  // Create hash table, where key is the ingredient, and value is array of entrees
+  for (let i = 0; i < dishes.length; i++) {
+    const entree = dishes[i][0]; // pizza
+
+    for (let j = 1; j < dishes[i].length; j++) {
+      const ingredient = dishes[i][j]; // cheese
+
+      if (ht.has(ingredient)) {
+        ht.get(ingredient).push(entree);
+      } else {
+        ht.set(ingredient, [entree]); 
+      }
+    }
+  }
+
+  // console.log(ht);
+
+  // Create 2D array
+  for (const [ing, entree] of ht) {
+    if (entree.length >= 2) { // There must be at least 2 entrees
+      entree.sort(); 
+      arr.push([ing, ...entree]); // spread syntax to concat array
+    }
+  }
+
+  // console.log(arr)
+
+  // Alphabetize ingredients
+  // The element in `arr` is a sub-array. So we can't use sort() w/out compare function.
+  // In the compare function we will target first word in sub-array
+  arr.sort((a, b) => {
+    // -1 = a first. 
+    // Assume a = 1, b = 5. We want `a` first. 
+    // `a` is less than `b`. So if `a < b`, return -1. 
+    if (a[0] < b[0]) {
+      return -1;
+    }
+
+    // 1 = b first
+    // assume a = 5, b = 1. We want `b` first. 
+    // `a` is greater than `b`. So if `a > b`, return 1. 
+    if (a[0] > b[0]) { 
+      return 1;
+    }
+
+    // 0 = unchanged
+    else {
+      return 0
+    }
+  });
+
+  // console.log(arr);
+  return arr;
 }
 
 /* =================================================================  
@@ -303,6 +376,9 @@ console.log(
 ================================================================= */
 
 /*
+We don't need to create a set of unique ingredients. 
+If we come across a duplicate ingredient, we want to update the property value.
+We want to push an entree to the entree array. 
  */
 
 /* =================================================================  
@@ -310,6 +386,7 @@ console.log(
 ================================================================= */
 
 /*
+Implement my own lexicographic sort
  */
 
 /* =================================================================  

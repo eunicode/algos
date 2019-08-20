@@ -6,6 +6,8 @@
 groupingDishes
 https://app.codesignal.com/interview-practice/task/xrFgR63cw7Nch4vXo
 
+Interview Practice > Hash Tables
+
 tags: easy, hash table
 
 INSTRUCTIONS

@@ -18,6 +18,12 @@ Return the earliest time slot that works for both people
 GIVEN
 The time slots are disjointed
 The time slots are sorted by the slots' start time
+
+Example
+input:  slotsA = [[10, 50], [60, 120], [140, 210]]
+        slotsB = [[0, 15], [60, 70]]
+        dur = 8
+output: [60, 68]
 */
 
 /* =================================================================  

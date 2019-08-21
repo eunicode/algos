@@ -9,7 +9,7 @@ INSTRUCTIONS
 REQUIREMENTS
 
 --------------------------------------------------------------------
-ASSURANCES
+GIVEN / ASSURANCES
 
  */
 

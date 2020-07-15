@@ -8,6 +8,13 @@ INSTRUCTIONS
 The Supermarket Queue
 https://www.codewars.com/kata/the-supermarket-queue/train/javascript
 
+We are given a number that represents the number of tills (or cashiers).
+And we are given an array of numbers, where each number represents a customer and the amount of time they will take.
+There is one customer per till, and as soon as the till is empty/free, the next customer in the array goes to that till.
+We are to return the total time it takes to get through all the customers.
+The concept is similar to a thread pool - running multiple processes at the same time.
+For example, customer array [2, 5, 1, 3, 6] and 3 tills should return 8.
+
 Clarifications
 There is only ONE queue serving many tills, and
 The order of the queue NEVER changes, and
@@ -105,6 +112,10 @@ function queueTime1(customers, n) {
 
 // SOLUTION - NESTED FOR LOOP
 
+/* Outer loop to iterate the customers array
+and inner loop to find the till with the minimum value
+*/
+
 function queueTime(customers, n) {
   // If customers array is empty
   if (customers.length === 0) {
@@ -121,7 +132,7 @@ function queueTime(customers, n) {
     return Math.max(...customers);
   }
 
-  // Create array to find min;
+  // Create array to store tills and their values. Later use to find min till
   const tills = [];
 
   // Fill tills
@@ -194,6 +205,7 @@ We need to keep track of the total time
 ================================================================= */
 
 /*
+Solve with heaps
  */
 
 /* =================================================================  

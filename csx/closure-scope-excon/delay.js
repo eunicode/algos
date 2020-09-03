@@ -52,6 +52,7 @@ We write a function `delay` that takes two arguments, a callback function and a 
 We call the `delay` function with two arguments. 
 All the callback function does is increment the global `count` variable. 
 The `delay` function returns a function that will execute setTimeout with the arguments of the callback function and time. 
+
 We call `delayedFunc`, and that executes the setTimeout function. 
 The setTimeout function waits 1 second, then it increments `count`. 
 We call setTimeout again, but this time, the callback function console logs `count`. 

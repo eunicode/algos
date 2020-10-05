@@ -15,6 +15,8 @@ When building your function:
 - Don't make your users watch the same movie twice
 - Optimize for runtime over memory
 
+Determine if two movie runtimes add up to the flight length
+
 TAGS: HASHTABLE, HASH TABLE, HASH-TABLE
 
 --------------------------------------------------------------------
@@ -44,8 +46,6 @@ PLAN
 
 // SOLUTION: O(N^2) TIME COMPLEXITY
 /*
-Determine if two movie runtimes add up to the flight length
-
 param1 = [1,2,3,4] 
 param2 = 5
 

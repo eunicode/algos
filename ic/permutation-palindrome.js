@@ -15,7 +15,7 @@ Examples:
 
 Check if any permutation of the input is a palindrome
 
-TAGS: HASHTABLE
+TAGS: HASHTABLE, HASH-TABLE, hashtable_
 
 --------------------------------------------------------------------
 REQUIREMENTS

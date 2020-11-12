@@ -17,7 +17,7 @@ When building your function:
 
 Determine if two movie runtimes add up to the flight length
 
-TAGS: HASHTABLE, HASH TABLE, HASH-TABLE
+TAGS: HASHTABLE, HASH TABLE, HASH-TABLE, HASHTABLE_
 
 --------------------------------------------------------------------
 REQUIREMENTS
@@ -99,6 +99,7 @@ you will find movie2's complement, movie1.
 //   return false;
 // }
 
+/* -------------------------------------------------------------- */
 // SOLUTION: O(N) W/ SET
 function canTwoMoviesFillFlight(movieLengths, flightLength) {
   let store = new Set();

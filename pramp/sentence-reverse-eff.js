@@ -6,22 +6,31 @@
 Sentence Reverse
 https://www.pramp.com/challenge/VKdqbrq6B1S5XAyGAOn4
 
-A more elegant and efficient approach is to reverse all the characters in arr and then reverse the characters in each word separately. 
-While the first reverse gives us the words in the reverse order as we wanted, it also reverses the characters of each word. 
+Input: 
+["p","e","r","f","e","c","t"," ","m","a","k","e","s"," ","p","r","a","c","t","i","c","e"]
+// ))
+
+Output: 
+["p","r","a","c","t","i","c","e"," ","m","a","k","e","s"," ","p","e","r","f","e","c","t"]
+
+A more elegant and efficient approach is to reverse all the characters in `arr`, and then reverse the characters in each word separately. 
+While the first reverse gives us the _words_ in the reverse order as we wanted, it also reverses the _characters_ of each word. 
 To fix that, we do the second reverse, which reverses each word separately.
 
 Reversing items in an array is done by a ‘mirror’ function, that swaps the items of every 2 indices with the same distance from the middle.
 
 Time Complexity: traversing the array twice with a constant number of actions for each item is linear O(N).
 
-Space Complexity: using iteration indices and one temp variable takes constant O(1) memory.
+Space Complexity: using iteration indices, and one temp variable, takes constant O(1) memory.
 
 If you have time left, ask your peer how the mirrorReverse function could be implemented with a single index. 
 It’s done with left to right linear iteration, and swapping arr[i] and arr[n-1-i] as long as i < n-1-i.
+
+TAGS: in-place_
 */
 
 /* =================================================================  
-  PSEUDOCODE
+  PSEUDOCODE / python?
 ================================================================= */
 
 /* 
@@ -90,26 +99,40 @@ function mirrorReverse(arr, start, end) {
 }
 
 function reverseWords(arr) {
+  
   // Reverse all characters
   const len = arr.length; // 22 // console.log({ len });
   mirrorReverse(arr, 0, len - 1);
 
   // Reverse each word
   let wordStart = null;
-
+ 
   for (let i = 0; i < len; i++) {
+    // If we hit a space
     if (arr[i] == ' ') {
+      // And the space is after a non-space character
       if (wordStart != null) {
+        // reverse the word from wordStart to the index before the space
         mirrorReverse(arr, wordStart, i - 1);
+        // Reset wordStart to null, so that the next character's index will be set to wordStart
         wordStart = null;
       }
-    } else if (i == len - 1) {
+    } 
+
+    // If we're at the last character in the array
+    else if (i == len - 1) {
+      // wordStart can be null if we have this: b__ -> __b -> __b (nothing happens) 
       if (wordStart != null) {
         mirrorReverse(arr, wordStart, i);
       }
-    } else if (wordStart == null) {
+    } 
+
+    // If we haven't set wordStart, we will set it to our current index
+    else if (wordStart == null) {
         wordStart = i;
       }
+
+    // The remaining option is wordStart is set. If wordStart is set, it remains the same value, until it is set to null, and we re-set it.   
   }
 
   return arr;
@@ -168,6 +191,7 @@ console.log(reverseWords(
 ["l","a","s","t"," ","n","a","m","e"," ","e","v","e","r"," ","f","i","r","s","t"," ","n","a","m","e"," ","g","r","e","a","t","e","s","t"]
 */
 
+console.log(reverseWords(["a", " ", " "]))
 /* =================================================================  
   NOTES
 ================================================================= */
@@ -191,6 +215,7 @@ function reverseWords(arr) {
 }
 
 mirrorReverse() mutates the given array in-place. 
+See also: parameters as storage
 Then we continue mutating the array in reverseWords().
 These two functions have access to the same parameter. 
 This is bc we passed `arr` when we called mirrorReverse(). 

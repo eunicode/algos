@@ -31,11 +31,17 @@ INCOMPLETE
 
 // Brute force
 /*
-Find all possible combinations of sets of 3. 
+Find all possible combinations of sets of 3 (3-combination/3-subset). 
 Use triply nested for loops. 
 Have a variable store the highest product. That way you don't have to worry about negatives.
+[1, -2, 3, -4, 5, -6]
  */
+
 function highestProductOf3(arrayOfInts) {
+  if (arrayOfInts.length < 3) {
+    throw new Error('Need at least three numbers')
+  }
+
   // Initialize `product` with first 3 numbers
   let product = arrayOfInts[0] * arrayOfInts[1] * arrayOfInts[2];
   
@@ -52,7 +58,7 @@ function highestProductOf3(arrayOfInts) {
           product = temp
         }
 
-        console.log(`${arrayOfInts[i]},${arrayOfInts[j]},${arrayOfInts[k]}`)
+        // console.log(`${arrayOfInts[i]},${arrayOfInts[j]},${arrayOfInts[k]}`)
       }
     }
   }

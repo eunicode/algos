@@ -80,24 +80,24 @@ This works bc you add movie1 to the hash table, so when you hit movie2 in the ar
 you will find movie2's complement, movie1. 
  */
 
-// function canTwoMoviesFillFlight(movieLengths, flightLength) {
-//   let hash = {};
+function canTwoMoviesFillFlight1(movieLengths, flightLength) {
+  let hash = {};
 
-//   for (let i = 0; i < movieLengths.length; i++) {
-//     let first = movieLengths[i];
-//     let second = flightLength - movieLengths[i];
+  for (let i = 0; i < movieLengths.length; i++) {
+    let first = movieLengths[i];
+    let second = flightLength - movieLengths[i];
     
-//     if (hash[second]) {
-//       // console.log(hash)
-//       return true;
-//     } else {
-//       hash[first] = 'placeholder'
-//     }
-//   }
+    if (hash[second]) {
+      // console.log(hash)
+      return true;
+    } else {
+      hash[first] = 'placeholder'
+    }
+  }
 
-//   // console.log(hash)
-//   return false;
-// }
+  // console.log(hash)
+  return false;
+}
 
 /* -------------------------------------------------------------- */
 // SOLUTION: O(N) W/ SET

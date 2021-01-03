@@ -44,29 +44,31 @@ The inner for loop is the iteration of the array.
 It is also the sell price. In the first inner for loop, it is: 2, 3, 4
 */
 
-function getMaxProfit(stockPrices) {
+function getMaxProfitN(stockPrices) {
   // If the array has 0 or 1 elements
   if (stockPrices.length === 0 || stockPrices.length === 1) {
-    throw new Error('A profit or loss requires at least 2 prices')
-  } 
+    throw new Error('A profit or loss requires at least 2 prices');
+  }
 
   // Initialize finalDiff to a difference that actually exists
   // Multiply by -1 bc I prefer to do `buy - sell` rather than `sell - buy`
-  let finalDiff = (stockPrices[0] - stockPrices[1]) * -1
+  let finalDiff = (stockPrices[0] - stockPrices[1]) * -1;
 
   // Find all possible pairs w/ nested for loops
   // Outer for loop: number of times to repeat inner for loop
-  for (let i = 0; i < stockPrices.length - 1; i++) { // We can stop at second to last element
-    let start = stockPrices[i];
+  for (let i = 0; i < stockPrices.length - 1; i++) {
+    // We can stop at second to last element
+    const start = stockPrices[i];
 
     // Inner for loop: iterate array
-    for (let j = i+1; j < stockPrices.length; j++) { // Iterate all the way to the last element
-      let second = stockPrices[j]
+    for (let j = i + 1; j < stockPrices.length; j++) {
+      // Iterate all the way to the last element
+      const second = stockPrices[j];
 
-      let diff = (start - second) * -1
+      const diff = (start - second) * -1;
       // Update finalDiff with the greatest value
       if (diff > finalDiff) {
-        finalDiff = diff
+        finalDiff = diff;
       }
     }
   }
@@ -76,7 +78,63 @@ function getMaxProfit(stockPrices) {
 
 /* -------------------------------------------------------------- */
 // SOLUTION - ONE FOR LOOP
+/*
+We buy, then sell. 
+profit = price2 - price1
+For positive numbers, price1 should be low, price2 should be high. 
 
+We're not just finding smallest value and biggest value. 
+We're trying to find biggest difference btw a previous element and later element. Sliding window?
+So for every element, we will
+- keep track of lowest price we've seen so far
+- see if we can get a better profit
+We have a minPrice we have seen/passed. 
+Then we check if the seen minPrice and the current value create a bigger profit. 
+Example array: [4, 2, 8, 9]
+
+Gotcha: Decreasing stock prices: [9, 8, 7, 3, 0]
+If the price goes down, minPrice is set to currentPrice. 
+That means `currentPrice - minPrice` is `currentPrice - currentPrice`. We're buying and selling at currentPrice, that's not allowed.
+Also, `currentPrice - currentPrice = 0`, which is greater than negative profit, so we'll never get the corrent profit.
+To avoid this problem and make sure you "buy" at earlier/seen price, calculate maxProfit before you update minPrice.
+
+Summary: 
+Initialize maxProfit and minPrice. 
+Iterate array
+- Test if `currentPrice - seen minPrice` gives greater profit. If so, update maxProfit.
+- Update minPrice.
+
+This is kinda like two-pointer, one pointer points to min, one pointer points to current element.
+*/
+
+function getMaxProfit(stockPrices) {
+  if (stockPrices.length < 2) {
+    throw new Error('Need at least 2 prices');
+  }
+
+  const arr = [...stockPrices];
+
+  let maxProfit = arr[1] - arr[0]; // Difference btw first two elements
+  let min = arr[0];
+
+  // Start at second element. Otherwise, you'll get arr[0] - arr[0] situation
+  for (let i = 1; i < arr.length; i++) {
+    // Check if current element gives you new maxProfit
+    let tempMax = arr[i] - min;
+
+    // Update `maxProfit`
+    if (tempMax > maxProfit) {
+      maxProfit = tempMax;
+    }
+
+    // Update `min`
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+
+  return maxProfit;
+}
 
 /* =================================================================  
                           TESTS

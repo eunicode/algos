@@ -37,7 +37,7 @@ Have a variable store the highest product. That way you don't have to worry abou
 [1, -2, 3, -4, 5, -6]
  */
 
-function highestProductOf3(arrayOfInts) {
+function highestProductOf3N(arrayOfInts) {
   if (arrayOfInts.length < 3) {
     throw new Error('Need at least three numbers')
   }
@@ -66,7 +66,11 @@ function highestProductOf3(arrayOfInts) {
   return product
 }
 
+/* -------------------------------------------------------------- */
 /* */
+
+function highestProductOf3(arrayOfInts) {
+}
 
 /* =================================================================  
                           TESTS

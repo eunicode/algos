@@ -1,4 +1,8 @@
-// Tags = single word, with underscore after the last character
+/* 
+Tags = single word, with underscore after the last character
+Maybe only add underscore for short words. 
+E.g. functionalprogramming doesn't need an underscore. But we use underscore for spread_, incomplete_, etc. 
+*/
 
 // ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ OPTIONAL ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦
 

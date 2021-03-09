@@ -17,7 +17,7 @@ When building your function:
 
 Determine if two movie runtimes add up to the flight length
 
-TAGS: HASHTABLE, HASH TABLE, HASH-TABLE, HASHTABLE_
+TAGS: HASHTABLE_
 
 --------------------------------------------------------------------
 REQUIREMENTS

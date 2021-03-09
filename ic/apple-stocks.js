@@ -17,7 +17,7 @@ getMaxProfit(stockPrices); // Returns 6 (buying for $5 and selling for $11)
 
 No "shorting"—you need to buy before you can sell. Also, you can't buy and sell in the same time step—at least 1 minute has to pass.
 
-TAGS: SINGLE-PASS, GREEDY, GREEDY-ALGOS, GREEDY_, SINGLEPASS_
+TAGS: GREEDY_, SINGLEPASS_
 
  */
 
@@ -44,7 +44,7 @@ The inner for loop is the iteration of the array.
 It is also the sell price. In the first inner for loop, it is: 2, 3, 4
 */
 
-function getMaxProfitN(stockPrices) {
+function getMaxProfitB(stockPrices) {
   // If the array has 0 or 1 elements
   if (stockPrices.length === 0 || stockPrices.length === 1) {
     throw new Error('A profit or loss requires at least 2 prices');

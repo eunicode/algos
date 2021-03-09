@@ -7,7 +7,7 @@ Given an array of integers, find the highest product you can get from three of t
 
 The input `arrayOfInts` will always have at least three integers.
 
-TAGS: GREEDY_, GREEDY-ALGOS
+TAGS: GREEDY_
 
 EDGE CASES
 Input array has
@@ -67,9 +67,16 @@ function highestProductOf3N(arrayOfInts) {
 }
 
 /* -------------------------------------------------------------- */
-/* */
+/* 
+highestProductOf3
+highestProductOf2
+lowestProductOf2
+highest
+lowest
+*/
 
 function highestProductOf3(arrayOfInts) {
+  
 }
 
 /* =================================================================  

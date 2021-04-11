@@ -31,17 +31,17 @@ TAGS: GREEDY_, SINGLEPASS_
 /* 
 [1,2,3,4] 
 We want all possible pairs (combination w/out repetition). 
-Order doesn't matter in that (1,2) and (2,1) are the same. 
-We only care about/use (1,2) bc we have to buy before we sell. 
+Order doesn't matter in that (1,2) and (2,1) are the same; they have the same difference. 
+We only use (1,2) instead of (2,1), bc we have to buy before we sell. 
 We use a nested for loop. 
 The outer for loop is the number of times we repeat the inner for loop block.
 1. (1,2), (1,3), (1,4)
 2. (2,3), (2,4)
 3. (3,4)
-It is also the buy price. In the first outer for loop, it is 1
+The outer for loop is also the buy price. In the first outer for loop, it is $1
 The inner for loop is the iteration of the array. 
-12, 13, 14
-It is also the sell price. In the first inner for loop, it is: 2, 3, 4
+(1,2), (1,3, (1,4)
+It is also the sell price. In the first inner for loop, it is: $2, $3, $4
 */
 
 function getMaxProfitB(stockPrices) {

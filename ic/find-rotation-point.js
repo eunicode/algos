@@ -55,12 +55,12 @@ function findRotationPoint(words) {
       }
     }
 
-    // `target` is `mid`, and `target` is not first or last element
+    // `target` is `mid`, and `target` is NOT first or last element
     if (words[mid - 1] > words[mid] && words[mid + 1] > words[mid]) {
       return mid;
     }
 
-    // `target` is `mid`, and `target` is first or last element
+    // `target` is `mid`, and `target` IS first or last element
     // `start === end` means we've searched entire array.
     if (start === end) {
       if (words[start] < words[0]) {
@@ -85,6 +85,8 @@ function findRotationPoint(words) {
 /* ================================================================= */
 
 /* SOLUTION - INTERVIEW CAKE
+
+while loop condition: floor < ceiling
  */
 
 function findRotationPointIC(words) {
@@ -97,7 +99,7 @@ function findRotationPointIC(words) {
     // Guess a point halfway between floor and ceiling
     const guessIndex = Math.floor(floorIndex + (ceilingIndex - floorIndex) / 2);
 
-    // If guess comes after first word or is the first word
+    // If guess comes after first word, or is the first word
     if (words[guessIndex] >= firstWord) {
       // Go right
       floorIndex = guessIndex;
@@ -171,6 +173,7 @@ function assertEquals(a, b, desc) {
 ================================================================= */
 
 /*
+Walls, limits, boundaries, floor, ceiling
  */
 
 /* =================================================================  

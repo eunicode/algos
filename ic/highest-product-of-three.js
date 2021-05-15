@@ -7,7 +7,7 @@ Given an array of integers, find the highest product you can get from three of t
 
 The input `arrayOfInts` will always have at least three integers.
 
-TAGS: GREEDY_
+TAGS: GREEDY_, incomplete_
 
 EDGE CASES
 Input array has
@@ -37,7 +37,7 @@ Have a variable store the highest product. That way you don't have to worry abou
 [1, -2, 3, -4, 5, -6]
  */
 
-function highestProductOf3N(arrayOfInts) {
+function highestProductOf3B(arrayOfInts) {
   if (arrayOfInts.length < 3) {
     throw new Error('Need at least three numbers')
   }
@@ -66,7 +66,7 @@ function highestProductOf3N(arrayOfInts) {
   return product
 }
 
-/* -------------------------------------------------------------- */
+/* ================================================================= */
 /* 
 highestProductOf3
 highestProductOf2
@@ -78,6 +78,8 @@ lowest
 function highestProductOf3(arrayOfInts) {
   
 }
+
+/* ================================================================= */
 
 /* =================================================================  
                           TESTS
